@@ -21,7 +21,14 @@
     <div id="layoutSidenav_nav">
         @yield('sidenav')
     </div>
-    @yield('content')
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+            @yield('content')
+            </div>
+        </main>
+    </div>
+
 </div>
 
 
