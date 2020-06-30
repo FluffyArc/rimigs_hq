@@ -36,6 +36,10 @@
 
                     </nav>
                 </div>
+                <a class="nav-link" href="{{route('posts')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Posts
+                </a>
                 <a class="nav-link" href="{{route('subjects')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Subject
