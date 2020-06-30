@@ -22,7 +22,11 @@ Route::group(['middleware'=>'prevent-back-history'], function(){
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
     Route::get('/user', 'HomeController@user')->name('user')->middleware('auth');
     Route::get('/questForm', 'QuestController@form')->name('questForm')->middleware('auth');
+    Route::get('/subjects', 'SubjectController@index')->name('subjects')->middleware('auth');
+    Route::get('/subjectForm','SubjectController@form')->name('subjectForm')->middleware('auth');
+
     Route::post('/addQuest','QuestController@addQuest')->middleware('auth');
+    Route::post('/addSubject','SubjectController@addSubject')->middleware('auth');
 });
 
 Route::get('/logout', 'Auth\LogoutController@index')->name('logout');
