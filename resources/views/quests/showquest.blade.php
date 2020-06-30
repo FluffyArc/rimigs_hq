@@ -15,6 +15,7 @@
                 <th>Max Player</th>
                 <th>Days Required</th>
                 <th>Subject</th>
+                <th>Action</th>
                 <?php $no = 1; ?>
                 </thead>
                 <tbody>
@@ -28,6 +29,9 @@
                         <td align="center">{{$quest->max_player}}</td>
                         <td align="center">{{$quest->days_required}}</td>
                         <td>{{$quest->subject->subject_name}}</td>
+                        <td align="center">
+                            <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}" role="button">POST</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

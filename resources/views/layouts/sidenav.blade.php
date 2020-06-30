@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+
 @section('sidenav')
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">

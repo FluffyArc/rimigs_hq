@@ -32,4 +32,10 @@ class QuestController extends Controller
 
         return view('quests.showquest', compact('quests'));
     }
+
+    public function questByID($id){
+        $quest = Quest::findOrFail($id);
+
+        return view('posts.postform', compact('quest'));
+    }
 }

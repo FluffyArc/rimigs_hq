@@ -11,4 +11,8 @@ class PostController extends Controller
         $posts = Post::all();
         return view('posts.post', compact('posts'));
     }
+
+    public function form(){
+        return view('posts.postform');
+    }
 }
