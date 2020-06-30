@@ -24,6 +24,7 @@ Route::group(['middleware'=>'prevent-back-history'], function(){
     Route::get('/questForm', 'QuestController@form')->name('questForm')->middleware('auth');
     Route::get('/subjects', 'SubjectController@index')->name('subjects')->middleware('auth');
     Route::get('/subjectForm','SubjectController@form')->name('subjectForm')->middleware('auth');
+    Route::get('/showQuest', 'QuestController@showQuest')->name('showQuest')->middleware('auth');
 
     Route::post('/addQuest','QuestController@addQuest')->middleware('auth');
     Route::post('/addSubject','SubjectController@addSubject')->middleware('auth');

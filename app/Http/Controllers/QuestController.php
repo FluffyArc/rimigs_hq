@@ -26,4 +26,10 @@ class QuestController extends Controller
 
         return redirect('/questForm')->with('mssg','Quest Added Successfully');
     }
+
+    public function showQuest(){
+        $quests = Quest::all();
+
+        return view('quests.showquest', compact('quests'));
+    }
 }

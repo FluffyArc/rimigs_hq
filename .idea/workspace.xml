@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39ea7807-a644-4c15-91b6-4f0a24430e86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/subjects/subject.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/subjects/subjectform.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/quests/showquest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Quest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidenav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidenav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -185,7 +186,7 @@
       <workItem from="1593224156884" duration="5137000" />
       <workItem from="1593397522695" duration="632000" />
       <workItem from="1593398196120" duration="8135000" />
-      <workItem from="1593479771116" duration="5619000" />
+      <workItem from="1593479771116" duration="8126000" />
     </task>
     <servers />
   </component>
