@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->integer('id_quest');
             $table->foreign('id_quest')->references('id')->on('quests')->onUpdate('cascade')->onDelete('cascade');
             $table->date('exp_date');
-            $table->date('complete_date');
+            $table->date('complete_date')->nullable();
             $table->boolean('ongoing');
             $table->timestamps();
         });

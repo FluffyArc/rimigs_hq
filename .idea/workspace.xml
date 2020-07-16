@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="39ea7807-a644-4c15-91b6-4f0a24430e86" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+=======
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12,9 +33,10 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -126,23 +148,25 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\rimigs_hq" />
+      <recent name="C:\wamp64\www\rimigs_hq\public\css" />
+      <recent name="C:\wamp64\www\rimigs_hq\public\theme" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\rimigs_hq\app\Http\Controllers\Auth" />
       <recent name="C:\wamp64\www\rimigs_hq\public\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\rimigs_hq\public\css" />
-      <recent name="C:\wamp64\www\rimigs_hq\public\theme" />
     </key>
   </component>
   <component name="RunManager">
@@ -163,24 +187,72 @@
       <updated>1593224124509</updated>
       <workItem from="1593224133699" duration="22000" />
       <workItem from="1593224156884" duration="5137000" />
+<<<<<<< HEAD
       <workItem from="1593483596727" duration="23000" />
       <workItem from="1594909544510" duration="1001000" />
+=======
+      <workItem from="1593397522695" duration="632000" />
+      <workItem from="1593398196120" duration="8135000" />
+      <workItem from="1593479771116" duration="9246000" />
+      <workItem from="1593517705656" duration="6025000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="422" y="167" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593230052535">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="475" y="189" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593398556687">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="422" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1593230052535" />
+<<<<<<< HEAD
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1593483617411">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593483617411" />
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1593483597582">
+=======
+    <state x="475" y="189" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1593398556687" />
+    <state x="500" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593481302358">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="500" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593481302358" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1593224152662">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593224152662" />
+    <state width="1344" height="195" key="GridCell.Tab.0.bottom" timestamp="1593440809464">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1344" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593440809464" />
+    <state width="1344" height="195" key="GridCell.Tab.0.center" timestamp="1593440809464">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1344" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593440809464" />
+    <state width="1344" height="195" key="GridCell.Tab.0.left" timestamp="1593440809464">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1344" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593440809464" />
+    <state width="1344" height="195" key="GridCell.Tab.0.right" timestamp="1593440809464">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1344" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593440809464" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1593224133758">
+>>>>>>> master
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593483597582" />
