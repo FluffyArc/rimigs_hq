@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39ea7807-a644-4c15-91b6-4f0a24430e86" name="Default Changelist" comment="" />
+    <list default="true" id="39ea7807-a644-4c15-91b6-4f0a24430e86" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -117,6 +123,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1dsqPPuThuhfoubMhZJFVOqq4PH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -125,7 +132,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -156,6 +163,8 @@
       <updated>1593224124509</updated>
       <workItem from="1593224133699" duration="22000" />
       <workItem from="1593224156884" duration="5137000" />
+      <workItem from="1593483596727" duration="23000" />
+      <workItem from="1594909544510" duration="1001000" />
     </task>
     <servers />
   </component>
@@ -167,14 +176,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="422" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1593230052535" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1593224152662">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1593483617411">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593224152662" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1593224133758">
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593483617411" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1593483597582">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593224133758" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593483597582" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593229609338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
