@@ -6,7 +6,7 @@
         @csrf
         <div class="form-group">
             <p>{{session('mssg')}}</p>
-        <h1>Add Quest</h1>
+            <h1>Add Quest</h1>
             <label>Quest Title</label>
             <input type="text" class="form-control" id="questTitle" name="questTitle" placeholder="Quest Title">
         </div>
@@ -29,16 +29,18 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Days Required</label>
-                <input type="number" class="form-control" id="daysRequired" name="daysRequired" placeholder="Max Player">
+                <input type="number" class="form-control" id="daysRequired" name="daysRequired"
+                       placeholder="Max Player">
             </div>
         </div>
         <div class="form-group">
             <label>Subject</label>
             <select id="subject" name="subject" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                @foreach($subjects as $subject)
+                    <option value="{{$subject->id}}">{{$subject->subject_name}}</option>
+                @endforeach
             </select>
         </div>
-       <button type="submit" class="btn btn-primary">Add Quest</button>
+        <button type="submit" class="btn btn-primary">Add Quest</button>
     </form>
 @endsection

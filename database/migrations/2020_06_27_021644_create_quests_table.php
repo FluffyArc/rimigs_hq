@@ -21,11 +21,16 @@ class CreateQuestsTable extends Migration
             $table->integer('level');
             $table->integer('max_player');
             $table->integer('days_required');
-            $table->integer('id_subject');
-            $table->foreign('id_subject')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('id_subject');
+          /*  $table->foreign('id_subject')
+                ->references('id')
+                ->on('subjects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');*/
             $table->timestamps();
+         });
 
-        });
+
     }
 
     /**
