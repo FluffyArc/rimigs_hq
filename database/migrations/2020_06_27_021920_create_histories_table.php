@@ -15,15 +15,12 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('id_user');
             $table->integer('exp_total');
-            $table->integer('id_post');
-            $table->foreign('id_post')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('id_subject');
-            $table->foreign('id_subject')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('id_post');
+            $table->unsignedBigInteger('id_subject');
             $table->timestamps();
-        });
+    });
     }
 
     /**

@@ -31,4 +31,8 @@ class SubjectController extends Controller
         return redirect('/subjects')->with('mssg', 'Subject Added Successfully');
     }
 
+    public function getSubjectName(){
+        $subjects = Subject::all();
+        return view('quests.questform', compact('subjects'));
+    }
 }

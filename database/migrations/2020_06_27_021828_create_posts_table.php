@@ -15,14 +15,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('id_quest');
-            $table->foreign('id_quest')->references('id')->on('quests')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_quest');
             $table->date('exp_date');
             $table->date('complete_date')->nullable();
             $table->boolean('ongoing');
             $table->timestamps();
+
         });
     }
 
