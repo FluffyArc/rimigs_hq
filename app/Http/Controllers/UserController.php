@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getAllStudent($id){
-        $students = User::findOrFail($id);
-
-        return view('posts.postform', compact('students'));
-    }
+   public function students(){
+       $students = User::all();
+       return view('posts.postform', compact('students'));
+   }
 }

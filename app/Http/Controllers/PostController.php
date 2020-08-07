@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Quest;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,4 +17,13 @@ class PostController extends Controller
     public function form(){
         return view('posts.postform');
     }
+
+    public function studentsAndQuestsById($id){
+        $students = User::all();
+        $quest = Quest::findOrFail($id);
+
+        return view('posts.postform', compact(['students','quest']));
+    }
+
+
 }

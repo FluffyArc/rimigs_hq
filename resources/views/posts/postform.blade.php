@@ -11,21 +11,17 @@
                 <label>Student Name</label>
                 <select id="studentName" name="studentName" class="form-control">
                     <option selected>Choose...</option>
-                    <option>...</option>
+                    @foreach($students as $student)
+                        <option value="{{$student->id}}">{{$student->name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
-            <div class="form-group">
-                <label>Quest</label>
-                <select id="quest" name="quest" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
 
         <div class="form-group">
             <label>Quest</label>
-            <input type="text" class="form-control" readonly="true" id="questDesc" name="questDesc" placeholder="Quest Description"
+            <input type="text" class="form-control" readonly="true" id="questDesc" name="questDesc"
+                   placeholder="Quest Description"
                    value="{{$quest->title}}">
         </div>
         <div class="form-row">

@@ -29,13 +29,8 @@ class QuestController extends Controller
 
     public function showQuest(){
         $quests = Quest::all();
-
         return view('quests.showquest', compact('quests'));
     }
 
-    public function questByID($id){
-        $quest = Quest::findOrFail($id);
 
-        return view('posts.postform', compact('quest'));
-    }
 }
