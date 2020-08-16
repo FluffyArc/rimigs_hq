@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('client.clienthome');
 });
 
+
 Auth::routes();
+
 
 Route::group(['middleware'=>['prevent-back-history','auth']], function(){
 

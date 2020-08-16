@@ -6,7 +6,7 @@
 	padding: 40px;
 	padding-top: 100px;
 	z-index: 1;
-	position: relative; 
+	position: relative;
 }
 
 #board-content {
@@ -31,6 +31,13 @@
 	width: 268px;
 	height: 298px;
 	text-align: center;
+    font-family: GameCube;
+    font-size: 25px;
+}
+
+@font-face {
+    font-family: 'GameCube';
+    src: url("../fonts/GameCube.ttf");
 }
 
 #btn-menu {
@@ -103,7 +110,7 @@ hr.white{
   border-top:0.5px solid white;
 }
 
-@media screen and (max-width: : 450px) {
+@media screen and (max-width: 450px) {
   #navmenu {padding-top: 15px;}
   .content {margin-left: 20px;}
   #navmenu a {font-size: 18px;}
