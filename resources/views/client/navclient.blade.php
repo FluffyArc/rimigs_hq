@@ -15,7 +15,7 @@
         <hr class="white">
         <a href="#">Sign Out</a>
     	<hr class="white">
-        <a href="#">Sign In</a>
+        <a href="{{route('login')}}">Sign In</a>
         <hr class="white">
  </div>
 </div>
