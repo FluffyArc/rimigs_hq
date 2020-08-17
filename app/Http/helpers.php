@@ -1,4 +1,4 @@
-?php
+<?php
 function checkPermission($permissions){
     $userAccess = getMyPermission(auth()->user()->user_type);
     foreach ($permissions as $key => $value) {
