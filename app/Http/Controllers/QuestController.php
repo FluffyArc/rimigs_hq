@@ -24,7 +24,7 @@ class QuestController extends Controller
 
         $quest->save();
 
-        return redirect('/questForm')->with('mssg','Quest Added Successfully');
+        return redirect('showQuest')->with('mssg','Quest Added Successfully');
     }
 
     public function showQuest(){
