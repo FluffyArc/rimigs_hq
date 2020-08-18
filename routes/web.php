@@ -44,7 +44,7 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
     Route::get('showQuest', 'QuestController@showQuest')->name('showQuest');
 
     Route::get('showQuestById/{id}', 'PostController@studentsAndQuestsById');
-
+    Route::get('editQuest/{id}', 'QuestController@editQuest')->name('editQuest');
 
     Route::get('posts','PostController@index')->name('posts');
 
@@ -54,6 +54,9 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
     Route::post('postQuest','PostController@postQuest')->name('postQuest');
+    Route::post('updateQuest/{id}', 'QuestController@updateQuest')->name('updateQuest');
+
+    Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 });
 
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
