@@ -16,6 +16,7 @@
                 <th>Days Required</th>
                 <th>Subject</th>
                 <th>Action</th>
+                <th>Update</th>
                 <?php $no = 1; ?>
                 </thead>
                 <tbody>
@@ -31,6 +32,9 @@
                         <td>{{$quest->subject->subject_name}}</td>
                         <td align="center">
                             <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}" role="button">POST</a>
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}" role="button">UPDATE</a>
                         </td>
                     </tr>
                 @endforeach
