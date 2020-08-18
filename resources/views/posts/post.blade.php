@@ -16,7 +16,12 @@
                 <?php $no = 1; ?>
                 </thead>
                 <tbody>
-
+                @foreach($posts as $post)
+                    <tr>
+                        <td>{{$no++}}</td>
+                        <td>{{$studentName}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

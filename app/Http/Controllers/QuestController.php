@@ -21,7 +21,7 @@ class QuestController extends Controller
         $quest->level = request('level');
         $quest->max_player = request('maxPlayer');
         $quest->days_required = request('daysRequired');
-        $quest->id_subject = "1";
+        $quest->id_subject = request('subject');
 
         $quest->save();
 

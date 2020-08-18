@@ -13,7 +13,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.post', compact('posts'));
+        $studentName = DB::table('users')
+            ->select('users.name')
+            ->join('posts','posts.id_user','=','users.id')
+            ->where('users.id','=','1')
+            ->get();
+        return view('posts.post', compact(['posts', 'studentName']));
     }
 
     public function form()
