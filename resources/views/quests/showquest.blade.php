@@ -34,7 +34,7 @@
                             <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}" role="button">POST</a>
                         </td>
                         <td align="center">
-                            <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}" role="button">UPDATE</a>
+                            <a class="btn btn-primary" href="/editQuest/{{$quest->id}}" role="button">UPDATE</a>
                         </td>
                     </tr>
                 @endforeach

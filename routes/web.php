@@ -44,7 +44,7 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
     Route::get('showQuest', 'QuestController@showQuest')->name('showQuest');
 
     Route::get('showQuestById/{id}', 'PostController@studentsAndQuestsById');
-
+    Route::get('editQuest/{id}', 'QuestController@editQuest')->name('editQuest');
 
     Route::get('posts','PostController@index')->name('posts');
 

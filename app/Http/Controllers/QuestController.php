@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Quest;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class QuestController extends Controller
@@ -30,6 +31,12 @@ class QuestController extends Controller
     public function showQuest(){
         $quests = Quest::all();
         return view('quests.showquest', compact('quests'));
+    }
+
+    public function editQuest($id){
+        $quests = Quest::findOrFail($id);
+        $subjects = Subject::all();
+        return view('quests.editquest', compact(['quests', 'subjects']));
     }
 
 
