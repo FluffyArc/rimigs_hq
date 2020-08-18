@@ -4,6 +4,7 @@
 @section('content')
     <div class="card-body">
         <h1>All Quest</h1>
+        <p>{{session('mssg')}}</p>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead align="center">
@@ -17,6 +18,7 @@
                 <th>Subject</th>
                 <th>Action</th>
                 <th>Update</th>
+                <th>Delete</th>
                 <?php $no = 1; ?>
                 </thead>
                 <tbody>
@@ -35,6 +37,9 @@
                         </td>
                         <td align="center">
                             <a class="btn btn-primary" href="/editQuest/{{$quest->id}}" role="button">UPDATE</a>
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-danger" href="destroyQuest/{{$quest->id}}" role="button">DELETE</a>
                         </td>
                     </tr>
                 @endforeach

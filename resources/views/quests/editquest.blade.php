@@ -2,7 +2,7 @@
 @extends('layouts.sidenav')
 
 @section('content')
-    <form action="{{route('addQuest')}}" method="post">
+    <form action="{{route('updateQuest', $quests->id)}}" method="post">
         @csrf
         <div class="form-group">
             <p>{{session('mssg')}}</p>

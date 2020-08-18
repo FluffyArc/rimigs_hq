@@ -39,5 +39,34 @@ class QuestController extends Controller
         return view('quests.editquest', compact(['quests', 'subjects']));
     }
 
+    public function updateQuest(Request $request, $id){
+        $this->validate($request,[
+            'questTitle' => 'required',
+            'questDesc' => 'required',
+            'exp' => 'required',
+            'level' => 'required',
+            'maxPlayer' => 'required',
+            'daysRequired' => 'required',
+            'subject' => 'required'
+        ]);
+
+        $quests = Quest::findOrFail($id);
+        $quests->title = $request->questTitle;
+        $quests->desc = $request->questDesc;
+        $quests->exp = $request->exp;
+        $quests->level = $request->level;
+        $quests->max_player = $request->maxPlayer;
+        $quests->days_required = $request->daysRequired;
+        $quests->id_subject = $request->subject;
+
+        $quests->save();
+        return redirect('showQuest')->with('mssg','Quest Updated Successfully');
+    }
+
+    public function destroyQuest($id){
+        $quests = Quest::findOrFail($id);
+        $quests->delete();
+        return redirect('showQuest')->with('mssg','Quest Deleted Successfully');
+    }
 
 }
