@@ -23,7 +23,9 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->exp_date}}</td>
                         <td>{{$post->complete_date}}</td>
-                        <td>{{$post->ongoing}}</td>
+                        @if($post->ongoing == 1)
+                            <td align="center"><img src="img/ongoing-stamp.png" width="100px"> </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
