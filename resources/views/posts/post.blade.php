@@ -19,7 +19,11 @@
                 @foreach($posts as $post)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$studentName}}</td>
+                        <td>{{$post->name}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{$post->exp_date}}</td>
+                        <td>{{$post->complete_date}}</td>
+                        <td>{{$post->ongoing}}</td>
                     </tr>
                 @endforeach
                 </tbody>
