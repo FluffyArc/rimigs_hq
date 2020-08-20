@@ -6,7 +6,7 @@
         <h1>Post</h1>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead align="center">
                 <th>No</th>
                 <th>Student Name</th>
                 <th>Quest Title</th>
