@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignKeysForHistoriesTable extends Migration
+class CreateForeignKeyForHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -41,6 +41,6 @@ class CreateForeignKeysForHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foreign_keys_for_histories');
+        Schema::dropIfExists('foreign_key_for_histories');
     }
 }

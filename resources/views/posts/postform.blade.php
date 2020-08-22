@@ -2,15 +2,15 @@
 @extends('layouts.sidenav')
 
 @section('content')
-    <form action="/postQuest" method="post">
+    <form action="{{route('postQuest')}}" method="post">
         @csrf
         <div class="form-group">
             <p>{{session('mssg')}}</p>
             <h1>Post Quest</h1>
             <div class="form-group">
                 <label>Student Name</label>
-                <select id="studentName" name="studentName" class="form-control">
-                    <option selected>Choose...</option>
+                <select id="studentName" name="studentName" class="form-control" required="true">
+                    <option selected value="">Choose...</option>
                     @foreach($students as $student)
                         <option value="{{$student->id}}">{{$student->name}}</option>
                     @endforeach
@@ -27,11 +27,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Expired Date</label>
-                <input type="date" class="form-control" id="exp" name="exp" placeholder="Experience Point">
+                <input type="input" class="form-control" id="exp" name="expiredDate" placeholder="Experience Point" readonly
+                       value="{{$date}}">
             </div>
             <div class="form-group col-md-6">
                 <label>Completed Date</label>
-                <input type="date" class="form-control" id="level" name="level" placeholder="Level">
+                <input type="date" class="form-control" id="level" name="completeDate" placeholder="Level">
             </div>
         </div>
 

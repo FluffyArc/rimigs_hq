@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignKeysForQuestsTable extends Migration
+class CreateForeignKeyForPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreateForeignKeysForQuestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('quests', function (Blueprint $table) {
-            $table->foreign('id_subject')
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreign('id_user')
                 ->references('id')
-                ->on('subjects')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('id_quest')
+                ->references('id')
+                ->on('quests')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -29,8 +35,6 @@ class CreateForeignKeysForQuestsTable extends Migration
      */
     public function down()
     {
-        Schema::create('quests', function (Blueprint $table){
-            $table->dropForeign('quests_id_subject_foreign');
-        });
+        Schema::dropIfExists('foreign_key_for_posts');
     }
 }
