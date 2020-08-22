@@ -21,7 +21,8 @@ Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
 Route::post('admin/login','Auth\LoginController@login');
 Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 
-Route::get('showQuest', 'QuestController@showQuest')->name('showQuest');
+Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('admin/register','Auth\RegisterController@register');
 
 
 //Auth::routes();
@@ -49,12 +50,13 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
     Route::get('posts','PostController@index')->name('posts');
 
     Route::get('postForm','PostController@form')->name('postForm');
-
+    Route::get ('userForm', 'UserController@index')->name('userForm');
 
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
     Route::post('postQuest','PostController@postQuest')->name('postQuest');
     Route::post('updateQuest/{id}', 'QuestController@updateQuest')->name('updateQuest');
+    Route::post('addStudent','StudentController@addStudent');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 });

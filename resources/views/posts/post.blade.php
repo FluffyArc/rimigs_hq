@@ -6,7 +6,7 @@
         <h1>Post</h1>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead align="center">
                 <th>No</th>
                 <th>Student Name</th>
                 <th>Quest Title</th>
@@ -19,7 +19,13 @@
                 @foreach($posts as $post)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$studentName}}</td>
+                        <td>{{$post->name}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{$post->exp_date}}</td>
+                        <td>{{$post->complete_date}}</td>
+                        @if($post->ongoing == 1)
+                            <td align="center"><img src="img/ongoing-stamp.png" width="100px"> </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
