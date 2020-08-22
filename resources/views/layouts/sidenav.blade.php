@@ -16,7 +16,6 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('questForm')}}">Add Quest</a>
                         <a class="nav-link" href="{{route('showQuest')}}">All Quest</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Active Quest</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -26,7 +25,7 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('userForm')}}">
                             Add Player
                         </a>
                         <a class="nav-link" href="#">

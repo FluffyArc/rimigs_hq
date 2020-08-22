@@ -27,7 +27,8 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Expired Date</label>
-                <input type="date" class="form-control" id="exp" name="expiredDate" placeholder="Experience Point" required="true">
+                <input type="input" class="form-control" id="exp" name="expiredDate" placeholder="Experience Point" readonly
+                       value="{{$date}}">
             </div>
             <div class="form-group col-md-6">
                 <label>Completed Date</label>
