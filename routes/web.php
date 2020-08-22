@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('client.clienthome');
+    return view('client.questlist');
 });
 
 Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
