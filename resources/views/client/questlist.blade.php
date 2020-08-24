@@ -3,7 +3,7 @@
 @section('content')
 <center>
 <div class="col-md-12" id="board">
-	<img src="{{ asset('img/questpage.png') }}" class="bgimage">
+	<img src="{{ asset('img/questpage.png') }}" class="questPageImage">
 
         <div id="quest-content" class="custom-scrollbar-css">
             <h1>Quest Selector</h1>
