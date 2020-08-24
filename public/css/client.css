@@ -3,11 +3,30 @@
 }
 
 #board {
-	padding: 40px;
-	padding-top: 100px;
+	/*padding: 50%;*/
+   /* padding-left: 55.5%;
+    padding-top: 31.5%;*/
+
+    margin-left: 15%;
+    margin-top: 5%;
+
+
 	z-index: 1;
-	position: relative;
+	position: absolute;
+
+   /* background-image: url("/img/questpage.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;*/
+
 }
+
+.bgimage{
+    width: 100%;
+    height: auto;
+}
+
+
 
 #board-content {
 	z-index: 2;
@@ -23,11 +42,11 @@
 #quest-content {
   z-index: 2;
   position: absolute;
-  top: 110px;
-  left: 170px;
+  top: 5%;
+  /*left: 15%;*/
   display: block;
-  width: 560px;
-  height: 650px;
+  width: 50%;
+  max-height: 580px;
   overflow-y: auto;
   border: 1px;
 }
@@ -35,8 +54,8 @@
 #quest-detail {
   z-index: 2;
   position: absolute;
-  top: 120px;
-  left: 750px;
+  top: 5%;
+  left: 51.5%;
   display: block;
   width: 560px;
   height: 640px;
@@ -178,3 +197,31 @@ hr.white{
   src: url("../font/monsterhunter.ttf");
 
 }
+
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #a44200;
+    background-image: linear-gradient(315deg, #a44200 0%, #f2c17d 74%);
+
+
+
+}
+
