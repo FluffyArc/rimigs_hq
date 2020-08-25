@@ -14,18 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('client.questlist');
+    return view('client.clientlogin');
 });
 
-Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
+/*Route::get('admin/login','Auth\LoginController@showLoginForm')->name('login');
 Route::post('admin/login','Auth\LoginController@login');
 Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('admin/register','Auth\RegisterController@register');
 
+Route::get('/login','ClientController@login')->name('loginClient');*/
 
-//Auth::routes();
+
+Auth::routes();
+
 
 /*Route::group(['middleware'=>'auth'], function(){
    Route::get('permissions-admin',['middleware'=>'check-permission:admin','uses'=>'HomeController@index']);
@@ -33,8 +36,9 @@ Route::post('admin/register','Auth\RegisterController@register');
 });*/
 
 Route::group(['middleware'=>['prevent-back-history','auth']], function(){
+    //Admin Routes
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user', 'HomeController@user')->name('user');
 
     Route::get('questForm', 'QuestController@form')->name('questForm');
@@ -59,6 +63,10 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
     Route::post('addStudent','StudentController@addStudent');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
+
+    //Student Routes
+    Route::get('/clientHome','ClientController@home')->name('clientHome')->middleware('student');
+    Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
 });
 
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
