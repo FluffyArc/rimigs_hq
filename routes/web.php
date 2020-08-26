@@ -70,7 +70,7 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(
 Route::group(['middleware'=>['prevent-back-history','auth', 'student']], function(){
     //Student Routes
     Route::get('/clientHome','ClientController@home')->name('clientHome');
-    Route::get('questList','ClientController@quest')->name('questList');
+    Route::get('questList/{level}','ClientController@quest')->name('questList');
     Route::get('questLevel', 'ClientController@questLevel')->name('questLevel')->middleware('student');
 
 });

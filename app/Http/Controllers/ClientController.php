@@ -6,6 +6,7 @@ use App\Quest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -21,8 +22,13 @@ class ClientController extends Controller
         return view('client.clienthome');
     }
 
-    public function quest(){
-        return view('client.questlist');
+    public function quest($level){
+        $levels = DB::table('quests')
+            ->select('quests.*')
+            ->where('level','=',$level)
+            ->get();
+
+        return view('client.questlist', compact(['levels']));
     }
 
     public function questLevel(){
