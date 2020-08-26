@@ -18,4 +18,8 @@ class ClientController extends Controller
     public function home(){
         return view('client.clienthome');
     }
+
+    public function quest(){
+        return view('client.questlist');
+    }
 }

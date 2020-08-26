@@ -24,5 +24,8 @@ class Admin
         if (Auth::user()->user_type == 'teacher') {
             return $next($request);
         }
+        if (Auth::user()->user_type == 'student') {
+            return redirect()->route('clientHome');
+        }
     }
 }
