@@ -71,6 +71,7 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
     //Student Routes
     Route::get('/clientHome','ClientController@home')->name('clientHome');
     Route::get('questList','ClientController@quest')->name('questList');
+    Route::get('questLevel', 'ClientController@questLevel')->name('questLevel')->middleware('student');
 
 });
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');

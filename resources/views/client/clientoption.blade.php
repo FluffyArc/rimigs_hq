@@ -5,7 +5,7 @@
         <div class="col-md-12" id="board">
             <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
             <div id="quest-content">
-                <img src="{{ asset('img/Dragons.png') }}">
+                <img src="{{ asset('img/Dragons.png') }}" class="dragonLogo">
             </div>
             <div id="quest-detail" class="custom-scrollbar-css">
                 <p>

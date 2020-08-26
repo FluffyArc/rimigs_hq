@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Quest;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -22,4 +24,12 @@ class ClientController extends Controller
     public function quest(){
         return view('client.questlist');
     }
+
+    public function questLevel(){
+        $user = Auth::user()->id;
+        $level = User::findOrFail($user);
+
+        return view('client.clientquestlevel', compact(['level']));
+    }
+
 }
