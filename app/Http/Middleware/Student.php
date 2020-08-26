@@ -19,6 +19,9 @@ class Student
         if (!Auth::check()) {
             return redirect()->route('clientLogin');
         }
+        if (\Illuminate\Support\Facades\Auth::user()->user_type == 'teacher') {
+            return redirect()->route('home');
+        }
         if (Auth::user()->user_type == 'student') {
             return $next($request);
         }

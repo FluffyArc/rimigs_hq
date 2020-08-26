@@ -10,7 +10,7 @@
                 <hr class="white">
                 <a href="#">Profile</a>
                 <hr class="white">
-                <a href="#">Quests</a>
+                <a href="{{route('questList')}}">Quests</a>
                 <hr class="white">
                 <a href="#">Quest Taken</a>
                 <hr class="white">

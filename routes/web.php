@@ -35,9 +35,9 @@ Auth::routes();
    Route::get('permissions-user',['middleware'=>'check-permission:user','uses'=>'HomeController@user']);
 });*/
 
-Route::group(['middleware'=>['prevent-back-history','auth']], function(){
+Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(){
     //Admin Routes
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/user', 'HomeController@user')->name('user');
 
@@ -64,10 +64,15 @@ Route::group(['middleware'=>['prevent-back-history','auth']], function(){
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 
-    //Student Routes
-    Route::get('/clientHome','ClientController@home')->name('clientHome')->middleware('student');
-    Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
+
 });
 
+Route::group(['middleware'=>['prevent-back-history','auth', 'student']], function(){
+    //Student Routes
+    Route::get('/clientHome','ClientController@home')->name('clientHome');
+    Route::get('questList','ClientController@quest')->name('questList');
+
+});
+Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
 
