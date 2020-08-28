@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
+
+
 class ClientController extends Controller
 {
     public function quests(){
@@ -23,13 +26,29 @@ class ClientController extends Controller
     }
 
     public function quest($level){
-        $levels = DB::table('quests')
-            ->select('quests.*')
-            ->where('level','=',$level)
-            ->get();
 
-        return view('client.questlist', compact(['levels']));
+            $levels = DB::table('quests')
+                ->select('quests.*')
+                ->where('level','=',$level)
+                ->get();
+
+            $count = DB::table('quests')
+                ->select('quests.*')
+                ->where('level','=',$level)
+                ->count();
+
+        return view('client.questlist', compact(['levels', 'count']));
+
+
     }
+
+    public function questDetail(Request $request){
+        $details = Quest::findOrFail($request->id);
+
+        return response()->json($details->desc);
+    }
+
+
 
     public function questLevel(){
         $user = Auth::user()->id;

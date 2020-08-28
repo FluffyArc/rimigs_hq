@@ -73,6 +73,9 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
     Route::get('questList/{level}','ClientController@quest')->name('questList');
     Route::get('questLevel', 'ClientController@questLevel')->name('questLevel')->middleware('student');
 
+    Route::post('questDetail', 'ClientController@questDetail')->name('questDetail');
+
+
 });
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
