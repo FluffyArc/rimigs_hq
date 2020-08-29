@@ -17,8 +17,9 @@
     			<input type="password" class="form-control" id="Password" placeholder="Password">
     		</p>
   			</div>
-
-  			<button type="submit" class="btn btn-primary mt-4">Submit</button>
+  			<a href="#">
+  				<img src="{{ asset('img/login.png') }}" style="width: 50%">
+  			</a>
 		</form>
 	</div>
 </center>

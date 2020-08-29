@@ -86,7 +86,7 @@
     z-index: 1;
     width: 500px;
     min-height: 550px;
-    background-color: #000;
+    background-color: #e09462;
     position: relative;
     color: #fff;
     border-radius: 25px;
@@ -119,7 +119,9 @@
     text-align: center;
 }
 
-
+.loginbtn {
+  background-image: url("../img/login.png");
+}
 
 .button2 {
     z-index: 99;

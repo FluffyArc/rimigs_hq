@@ -28,8 +28,28 @@
           <input type="password" class="form-control" id="ConfirmPassword" placeholder="ConfirmPassword">
         </p>
         </div>
-  			<button type="submit" class="btn btn-primary mt-4">Submit</button>
+  			<a href="#">
+          <img src="{{ asset('img/eggsclosed.png') }}" id="eggclosed" onmouseover="openegg()" class="mt-3">
+          <img src="{{ asset('img/egg.png') }}" id="eggopen" onmouseout="closeegg()" class="mt-3" style="display: none;">   
+        </a>
 		</form>
 	</div>
 </center>
+
+<script>
+function openegg() {
+  var y = document.getElementById("eggclosed");
+  y.style.display = "none"
+  var x = document.getElementById("eggopen");
+  x.style.display = "block";
+
+}
+
+function closeegg() {
+  var y = document.getElementById("eggclosed");
+  y.style.display = "block"
+  var x = document.getElementById("eggopen");
+  x.style.display = "none";
+}
+</script>
 @endsection
