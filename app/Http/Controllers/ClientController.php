@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Quest;
 use App\User;
 use Illuminate\Http\Request;
@@ -45,8 +46,10 @@ class ClientController extends Controller
     public function questDetail(Request $request){
         $details = Quest::findOrFail($request->id);
 
-        return response()->json($details->desc);
+        return response()->json($details);
     }
+
+
 
 
 
@@ -57,4 +60,20 @@ class ClientController extends Controller
         return view('client.clientquestlevel', compact(['level']));
     }
 
+    public function questPost(Request $request){
+        $post = new Post();
+        /*$post->id_user = DB::table('users')
+            ->where('name', '=', $request->input('studentName'))
+            ->value('id');*/
+        $post->id_user = $request->id_user;
+        $post->id_quest = $request->id_quest;
+        $post->exp_date = $request->exp_date;
+
+        $post->ongoing = "1";
+        $post->status = "ongoing";
+        $post->exp = $request->exp;
+        $post->save();
+
+        return response()->json(['success'=>'Quest Posted']);
+    }
 }

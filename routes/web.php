@@ -55,12 +55,13 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(
 
     Route::get('postForm','PostController@form')->name('postForm');
     Route::get ('userForm', 'UserController@index')->name('userForm');
+    Route::get('users', 'UserController@user')->name('users');
 
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
     Route::post('postQuest','PostController@postQuest')->name('postQuest');
     Route::post('updateQuest/{id}', 'QuestController@updateQuest')->name('updateQuest');
-    Route::post('addStudent','StudentController@addStudent');
+    Route::post('addStudent','UserController@addStudent')->name('addStudent');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 
@@ -74,6 +75,7 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
     Route::get('questLevel', 'ClientController@questLevel')->name('questLevel')->middleware('student');
 
     Route::post('questDetail', 'ClientController@questDetail')->name('questDetail');
+    Route::post('questPost','ClientController@questPost');
 
 
 });

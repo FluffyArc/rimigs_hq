@@ -28,7 +28,7 @@
                         <a class="nav-link" href="{{route('userForm')}}">
                             Add Player
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('users')}}">
                             All Player
                         </a>
 
