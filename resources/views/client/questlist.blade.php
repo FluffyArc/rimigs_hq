@@ -37,55 +37,79 @@
                     had done everything right and she knew she would be rewarded for doing so with the promotion. So
                     when the promotion was given to her main rival, it not only stung, it threw her belief system into
                     disarray. It was her first big lesson in life, but not the last.--}}
-                    <script>
-                        function questClick(val) {
-                            var id = val;
-                            $.ajaxSetup({
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                }
-                            });
-                            $.ajax({
-                                url: '{{url('questDetail')}}',
-                                type: 'POST',
-                                data: {
-                                    id: id
-                                },
-                                success: function (data) {
-                                    document.getElementById('questDetail').innerHTML = data;
-                                    document.getElementById('btn-post').style.display = "block";
-                                    document.getElementById('post-text').style.display = "block";
-                                    //alert('success').html(data);
-                                },
-                                error: function (response) {
-                                    console.log(data)
-                                }
 
-
-                            });
-                            //document.getElementById('questDetail').innerHTML =
-
-
-                        }
-
-
-                    </script>
                     <div id="questDetail">
 
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="../img/button.png" class="btn-post" id="btn-post" >
+                    <img src="../img/button.png" class="btn-post" id="btn-post"  onclick="postQuest()">
                     <div class="post-text" id="post-text"><strong>POST</strong></div>
                 </div>
+
 
 
             </div>
 
         </div>
 
+        <script>
+            var id;
+            var exp;
+            var days_required;
+            function questClick(val) {
+                id = val;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: '{{url('questDetail')}}',
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        exp = data["exp"];
+                        days_required = data["days_required"];
+                        document.getElementById('questDetail').innerHTML = data["desc"];
+                        document.getElementById('btn-post').style.display = "block";
+                        document.getElementById('post-text').style.display = "block";
+                        //alert('success').html(data);
+                    },
+                    error: function (response) {
+                        console.log(data)
+                    }
 
+
+                });
+                //document.getElementById('questDetail').innerHTML =
+
+
+            }
+
+            function postQuest(){
+                $.ajax({
+                    url: '{{url('questPost')}}',
+                    type: 'POST',
+                    data: {
+                      id_user: {{Auth::user()->id}},
+                        id_quest: id,
+                        exp_date: "2020-08-30",
+
+                        exp: exp,
+                     },
+                    success:function (data){
+                        alert(data.success);
+                    },
+                    error: function (response) {
+                        console.log(data)
+                    }
+                });
+            }
+        </script>
 
     </center>
 @endsection
