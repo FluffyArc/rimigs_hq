@@ -1,6 +1,7 @@
 @extends('base')
 @extends('client.navclient')
 @section('content')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <center>
         <div class="col-md-12" id="board">
@@ -51,7 +52,9 @@
                                     id: id
                                 },
                                 success: function (data) {
-                                    document.getElementById('questDetail').innerHTML = data
+                                    document.getElementById('questDetail').innerHTML = data;
+                                    document.getElementById('btn-post').style.display = "block";
+                                    document.getElementById('post-text').style.display = "block";
                                     //alert('success').html(data);
                                 },
                                 error: function (response) {
@@ -71,10 +74,18 @@
 
                     </div>
                 </div>
+
+                <div class="container">
+                    <img src="../img/button.png" class="btn-post" id="btn-post" >
+                    <div class="post-text" id="post-text"><strong>POST</strong></div>
+                </div>
+
+
             </div>
 
-
         </div>
+
+
 
     </center>
 @endsection

@@ -7,7 +7,7 @@
     /* padding-left: 55.5%;
      padding-top: 31.5%;*/
 
-    margin-left: 8%;
+    margin-left: 18%;
     margin-top: 3%;
 
 
@@ -27,7 +27,7 @@
 }
 
 .questPageImage {
-    width: 140%;
+    width: 100%;
 
 }
 
@@ -49,8 +49,8 @@
     top: 5%;
     /*left: 15%;*/
     display: block;
-    width: 70%;
-    max-height: 840px;
+    width: 50%;
+    max-height: 85%;
     overflow-y: auto;
     border: 1px;
 }
@@ -61,7 +61,7 @@
 }
 
 .level {
-    width: 100%;
+    width: 80%;
     margin-top: -10%;
 }
 
@@ -69,25 +69,44 @@
     z-index: 2;
     position: absolute;
     top: 5%;
-    left: 81.5%;
+    left: 51%;
     display: block;
-    width: 600px;
-    height: 840px;
+    width: 50%;
+    height: 540px;
     overflow-y: auto;
     border: 1px;
 
 }
 
+.btn-post {
+    width: 40%;
+    display: none;
+
+}
+
+.post-text{
+    margin-top: -11.5%;
+    font-family: 'rageitalic';
+    display: none;
+}
+
+
 .login {
+
     padding: 40px;
     padding-top: 30px;
     margin-top: 100px;
     z-index: 1;
-    width: 300px;
-    height: 500px;
+    width: 500px;
+    min-height: 550px;
     background-color: #000;
     position: relative;
     color: #fff;
+    border-radius: 25px;
+}
+
+.login .label{
+    float: left;
 }
 
 .text {
@@ -107,12 +126,11 @@
     z-index: 99;
     margin: 10px;
     padding: 10px;
-    padding-top: 60px;
+    padding-top: 20px;
     width: 478px;
     height: 135px;
     text-align: center;
 }
-
 
 
 .button2 {
