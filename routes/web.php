@@ -83,5 +83,7 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
 });
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
 Route::post('clientLogin', 'Auth\LoginController@login');
+Route::get('register','ClientController@register')->name('register');
+Route::post('register','Auth\RegisterController@register');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
 

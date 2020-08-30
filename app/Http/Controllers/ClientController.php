@@ -26,6 +26,10 @@ class ClientController extends Controller
         return view('client.clienthome');
     }
 
+    public function register(){
+        return view('client.clientregister');
+    }
+
     public function quest($level){
 
             $levels = DB::table('quests')
