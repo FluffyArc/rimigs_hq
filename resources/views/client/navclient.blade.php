@@ -16,7 +16,7 @@
                 <hr class="white">
                 <a href="{{ route('logout') }}">Sign Out</a>
                 <hr class="white">
-                <a href="{{route('login')}}">Sign In</a>
+                <a href="{{route('clientLogin')}}">Sign In</a>
                 <hr class="white">
             </div>
         </div>
