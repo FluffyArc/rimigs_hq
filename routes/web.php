@@ -24,7 +24,9 @@ Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('admin/register','Auth\RegisterController@register');
 
-Route::get('/login','ClientController@login')->name('loginClient');
+
+
+
 
 
 //Auth::routes();
@@ -80,5 +82,6 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
 
 });
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
+Route::post('clientLogin', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
 
