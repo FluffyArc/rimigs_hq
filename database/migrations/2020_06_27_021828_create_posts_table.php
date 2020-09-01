@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->date('exp_date');
             $table->date('complete_date')->nullable();
             $table->boolean('ongoing');
-            $table->string('status');
+            //$table->string('status');
             $table->timestamps();
 
         });

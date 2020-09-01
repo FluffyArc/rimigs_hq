@@ -14,8 +14,11 @@
 <body style="background-image: url('../img/bg.png');">
 <!-- TOP NAV -->
 @yield('navclient')
+<div class="container">
+    @yield('content')
+</div>
 <!-- END NAV -->
-@yield('content')
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

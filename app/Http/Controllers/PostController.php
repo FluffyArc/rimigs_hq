@@ -53,7 +53,6 @@ class PostController extends Controller
         $post->exp_date = $request->expiredDate;
         $post->complete_date = $request->completeDate;
         $post->ongoing = "1";
-        $post->status = "ongoing";
         $post->save();
 
         return redirect('posts')->with('mssg', 'Post Added Successfully');

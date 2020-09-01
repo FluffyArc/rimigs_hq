@@ -12,12 +12,13 @@
                 <hr class="white">
                 <a href="{{route('questLevel')}}">Quests</a>
                 <hr class="white">
-                <a href="#">Quest Taken</a>
-                <hr class="white">
-                <a href="{{ route('logout') }}">Sign Out</a>
+                <a href="{{route('questTaken')}}">Quest Taken</a>
                 <hr class="white">
                 <a href="{{route('clientLogin')}}">Sign In</a>
                 <hr class="white">
+                <a href="{{ route('logout') }}">Sign Out</a>
+                <hr class="white">
+
             </div>
         </div>
         <script>

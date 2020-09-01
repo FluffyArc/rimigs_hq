@@ -97,12 +97,13 @@
                     data: {
                       id_user: {{Auth::user()->id}},
                         id_quest: id,
-                        exp_date: "2020-08-30",
+                        exp_date: days_required,
 
                         exp: exp,
                      },
                     success:function (data){
                         alert(data.success);
+                        //console.log(data)
                     },
                     error: function (response) {
                         console.log(data)

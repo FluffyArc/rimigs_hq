@@ -24,7 +24,9 @@ Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('admin/register','Auth\RegisterController@register');
 
-Route::get('/login','ClientController@login')->name('loginClient');
+
+
+
 
 
 //Auth::routes();
@@ -73,6 +75,8 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
     Route::get('/clientHome','ClientController@home')->name('clientHome');
     Route::get('questList/{level}','ClientController@quest')->name('questList');
     Route::get('questLevel', 'ClientController@questLevel')->name('questLevel')->middleware('student');
+    Route::get('questTaken','ClientController@questTaken')->name('questTaken')->middleware('student');
+    Route::get('detail/{id_quest}','ClientController@detail')->name('detail')->middleware('student');
 
     Route::post('questDetail', 'ClientController@questDetail')->name('questDetail');
     Route::post('questPost','ClientController@questPost');
@@ -80,5 +84,8 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'student']], functio
 
 });
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
+Route::post('clientLogin', 'Auth\LoginController@login');
+Route::get('register','ClientController@register')->name('register');
+Route::post('register','Auth\RegisterController@register');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
 
