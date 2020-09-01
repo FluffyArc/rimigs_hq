@@ -33,8 +33,8 @@
                 </div>
                 <input type="image" name="submit" src="../img/login.png" class="loginbtn">
                 <div class="form-group">
-                    <label for="register" class="label">
-                        <a href="{{route('register')}}" style="color: white">New User? Click Here To Register</a>
+                    <label for="register">
+                        <a href="{{route('register')}}" style="color: white; text-decoration: underline">New User? Click Here To Register</a>
                     </label>
                 </div>
             </form>
