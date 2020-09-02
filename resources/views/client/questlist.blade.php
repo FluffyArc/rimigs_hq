@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="container">
-                    <img src="../img/button.png" class="btn-post" id="btn-post"  onclick="postQuest()">
-                    <div class="post-text" id="post-text"><strong>POST</strong></div>
+                    <img src="../img/post-button.png" class="btn-post" id="btn-post"  onclick="postQuest()">
+
                 </div>
 
 

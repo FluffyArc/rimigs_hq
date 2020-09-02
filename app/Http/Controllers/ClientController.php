@@ -93,7 +93,7 @@ class ClientController extends Controller
         if($check->count() == 1){
             return response()->json(['success'=>'Sorry, You are still in ongoing quest']);
         }else if($checkCompletedQuest->count() >= 1){
-            return response()->json(['success'=>'Yoy already complete this quest']);
+            return response()->json(['success'=>'You already complete this quest']);
         }
         else{
             $post->save();
@@ -117,5 +117,20 @@ class ClientController extends Controller
         $quests = Quest::findOrFail($idQuest);
 
         return view('client.clientquestdetail', compact(['quests']));
+    }
+
+    public function abortQuest(Request $request){
+        $quests = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_user','=',Auth::user()->id)
+            ->where('id_quest','=',$request->idQuest)
+            ->first();
+
+
+        $abort = Post::findOrFail($quests->id);
+        $abort->ongoing = '2';
+
+        $abort->save();
+        return response()->json(['success'=>'Quest Aborted']);
     }
 }

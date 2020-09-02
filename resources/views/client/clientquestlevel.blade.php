@@ -8,7 +8,7 @@
                 <img src="{{ asset('img/Dragons.png') }}" class="dragonLogo">
             </div>
             <div id="quest-detail" class="custom-scrollbar-css">
-                <h1 style="text-align: center; padding-left: 30px; ">Choose a level</h1>
+                <h1 style="text-align: center; font-size: 2vw; ">Choose a level</h1><br>
                     @if($level->exp <= 20)
                     <div class="button">
                         <a href="questList/1">

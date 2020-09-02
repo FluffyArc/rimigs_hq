@@ -14,8 +14,10 @@
                 <hr class="white">
                 <a href="{{route('questTaken')}}">Quest Taken</a>
                 <hr class="white">
+                @if(!Auth::check())
                 <a href="{{route('clientLogin')}}">Sign In</a>
                 <hr class="white">
+                @endif
                 <a href="{{ route('logout') }}">Sign Out</a>
                 <hr class="white">
 

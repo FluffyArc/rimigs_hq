@@ -9,10 +9,11 @@
 
 
     margin-top: 3%;
+    margin-left: 18%;
 
     width: 60%;
     z-index: 1;
-    position: relative;
+    position: absolute;
 
     /* background-image: url("/img/questpage.png");
      background-repeat: no-repeat;
@@ -47,22 +48,32 @@
     z-index: 2;
     position: absolute;
     top: 5%;
-    /*left: 15%;*/
-    display: block;
+
+
     width: 50%;
     max-height: 85%;
-    overflow-y: auto;
-    border: 1px;
+}
+
+.abort-button{
+
+    position: absolute;
+    top: 60%;
+    width: 35%;
+    margin-left: -18%;
+
+
 }
 
 .dragonLogo {
     margin-top: 28%;
     width: 70%;
+
 }
 
 .level {
     width: 80%;
     margin-top: -10%;
+
 }
 
 #quest-detail {
@@ -72,9 +83,11 @@
     left: 51%;
     display: block;
     width: 50%;
-    height: 540px;
+    height: 90%;
     overflow-y: auto;
     border: 1px;
+
+
 
 }
 
@@ -89,6 +102,7 @@
     font-family: 'rageitalic';
     display: none;
 }
+
 
 
 .login {
@@ -169,13 +183,11 @@
 }
 
 .button {
-    z-index: 99;
-    margin: 10px;
-    padding: 10px;
-    padding-top: 20px;
-    width: 478px;
-    height: 135px;
+    z-index: 2;
+    width: 80%;
+    height: 25%;
     text-align: center;
+
 }
 
 .loginbtn {
