@@ -22,7 +22,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <img src="../img/abort-button.png" class="abort-button" id="abort-button"  onclick="abortQuest({{$quests->id}})">
+                    <img src="../img/abort-button.png" class="abort-button" id="abort-button"
+                         onclick="abortQuest({{$quests->id}})">
 
                 </div>
             </div>
@@ -32,7 +33,6 @@
         <script type="text/javascript">
             var iduser;
             var idquest;
-
 
 
             function abortQuest(idQuest) {
@@ -58,11 +58,15 @@
                                 data: {
                                     idQuest: idquest
                                 },
-                                success: function(data) {
+                                success: function (data) {
                                     swal(data.success, {
                                         icon: "success",
                                     });
-                                    window.location.href = {{route('subjects')}}
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 3000);
+
+
                                     //console.log(data["id"])
                                     //alert('success').html(data);
                                 },
@@ -80,16 +84,16 @@
                     });
 
 
-
-
-
-
             }
 
-            window.addEventListener("load",function(){
-                if({{$posts->ongoing}} == 1){
+            window.addEventListener("load", function () {
+                if ({{$posts->ongoing}} == 1
+            )
+                {
                     document.getElementById('abort-button').style.display = "inline";
-                } else{
+                }
+            else
+                {
                     document.getElementById('abort-button').style.display = "none";
                 }
 
