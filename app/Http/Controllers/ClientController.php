@@ -62,8 +62,21 @@ class ClientController extends Controller
 
     public function questLevel($subject){
 
-        $user = Auth::user()->id;
-        $level = User::findOrFail($user);
+        /*$user = Auth::user()->id;
+        $level = User::findOrFail($user);*/
+        $key = str_replace('%20',' ',$subject);
+        $subjects = DB::table('subjects')
+            ->select('subjects.*')
+            ->where('subject_name','=',$key)
+            ->first();
+
+        $level = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_user','=',Auth::user()->id)
+            ->where('id_subject','=',$subjects->id)
+            ->where('ongoing','=',0)
+            ->sum('exp');
+
 
         return view('client.clientquestlevel', compact(['level', 'subject']));
     }
@@ -98,9 +111,9 @@ class ClientController extends Controller
             ->get();
 
         if($check->count() == 1){
-            return response()->json(['success'=>'Sorry, You are still in ongoing quest']);
+            return response()->json(['failed'=>'Sorry, You are still in ongoing quest']);
         }else if($checkCompletedQuest->count() >= 1){
-            return response()->json(['success'=>'You already complete this quest']);
+            return response()->json(['failed'=>'You already complete this quest']);
         }
         else{
             $post->save();
@@ -142,6 +155,8 @@ class ClientController extends Controller
     }
 
     public function profile(){
+
+
         $subjects = DB::table('posts')
             ->select('posts.*', 'subjects.subject_name')
             ->join('subjects','posts.id_subject','subjects.id')

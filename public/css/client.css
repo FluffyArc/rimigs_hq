@@ -105,7 +105,7 @@ body{
 #quest-detail {
     z-index: 2;
     position: absolute;
-    top: 5%;
+    top: 2%;
     left: 51%;
     display: block;
     width: 50%;
@@ -227,14 +227,13 @@ body{
     padding: 5%;
     padding-top: 6%;
     width: 77%;
-    height: 75px;
+
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
     background-size: 100%;
     /*border: #1b1e21 3px solid;*/
 
-    font-size: 25px;
-    font-family: 'rageitalic';
+
 
 }
 
