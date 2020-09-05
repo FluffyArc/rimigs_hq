@@ -135,8 +135,13 @@ class ClientController extends Controller
 
     public function detail($idQuest){
         $quests = Quest::findOrFail($idQuest);
+        $posts = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_user','=',Auth::user()->id)
+            ->where('id_quest','=',$idQuest)
+            ->first();
 
-        return view('client.clientquestdetail', compact(['quests']));
+        return view('client.clientquestdetail', compact(['quests','posts']));
     }
 
     public function abortQuest(Request $request){
@@ -151,7 +156,7 @@ class ClientController extends Controller
         $abort->ongoing = '2';
 
         $abort->save();
-        return response()->json(['success'=>'Quest Aborted']);
+        return response()->json(['success'=>'Quest Aborted! No Worries, you can take another quest']);
     }
 
     public function profile(){

@@ -22,7 +22,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <img src="../img/abort-button.png" class="abort-button" onclick="abortQuest({{$quests->id}})">
+                    <img src="../img/abort-button.png" class="abort-button" id="abort-button"  onclick="abortQuest({{$quests->id}})">
 
                 </div>
             </div>
@@ -32,6 +32,9 @@
         <script type="text/javascript">
             var iduser;
             var idquest;
+
+
+
             function abortQuest(idQuest) {
                 $.ajaxSetup({
                     headers: {
@@ -40,27 +43,57 @@
                 });
                 idquest = idQuest;
 
-                $.ajax({
-                    url: '{{url('abort')}}',
-                    type: 'POST',
-                    data: {
-                        idQuest: idquest
-                    },
-                    success: function(data) {
-                        alert(data.success);
-                        //console.log(data["id"])
-                        //alert('success').html(data);
-                    },
-                    error: function (response) {
-                        //console.log(idquest)
-                        console.log(data)
-                    }
+                swal({
+                    title: "Abort This Quest?",
+                    text: "Is it to hard? No Worries, you can post another quest later",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                url: '{{url('abort')}}',
+                                type: 'POST',
+                                data: {
+                                    idQuest: idquest
+                                },
+                                success: function(data) {
+                                    swal(data.success, {
+                                        icon: "success",
+                                    });
+                                    window.location.href = {{route('subjects')}}
+                                    //console.log(data["id"])
+                                    //alert('success').html(data);
+                                },
+                                error: function (response) {
+                                    //console.log(idquest)
+                                    console.log(data)
+                                }
 
 
-                });
+                            });
+
+                        } else {
+                            swal("Good, Keep Going! I know you can do it");
+                        }
+                    });
+
+
+
+
+
 
             }
 
+            window.addEventListener("load",function(){
+                if({{$posts->ongoing}} == 1){
+                    document.getElementById('abort-button').style.display = "inline";
+                } else{
+                    document.getElementById('abort-button').style.display = "none";
+                }
+
+            });
 
         </script>
     </center>
