@@ -7,7 +7,7 @@
         <div class="col-md-12" id="board">
             <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
 
-            <div id="quest-content" class="custom-scrollbar-css">
+            <div id="quest-content" class="custom-scro llbar-css">
                 <h1>Quest Selector</h1>
 
                 @foreach($levels as $level)
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="container">
-                    <img src="../img/post-button.png" class="btn-post" id="btn-post"  onclick="postQuest()">
+                    <img src="{{asset('../img/post-button.png')}}" class="btn-post" id="btn-post"  onclick="postQuest()">
 
                 </div>
 
@@ -58,6 +58,7 @@
             var id;
             var exp;
             var days_required;
+            var id_subject;
             function questClick(val) {
                 id = val;
                 $.ajaxSetup({
@@ -74,6 +75,7 @@
                     success: function (data) {
                         exp = data["exp"];
                         days_required = data["days_required"];
+                        id_subject = data["id_subject"];
                         document.getElementById('questDetail').innerHTML = data["desc"];
                         document.getElementById('btn-post').style.display = "block";
                         document.getElementById('post-text').style.display = "block";
@@ -100,6 +102,7 @@
                         exp_date: days_required,
 
                         exp: exp,
+                        id_subject: id_subject,
                      },
                     success:function (data){
                         alert(data.success);
