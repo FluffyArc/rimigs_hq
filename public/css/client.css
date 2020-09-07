@@ -1,3 +1,7 @@
+body{
+    background-image: url("../img/bg.png");
+}
+
 #header {
     top: 0;
 }
@@ -7,12 +11,13 @@
     /* padding-left: 55.5%;
      padding-top: 31.5%;*/
 
-
+    position: relative;
     margin-top: 3%;
+    margin-left: 18%;
 
     width: 60%;
     z-index: 1;
-    position: relative;
+    position: absolute;
 
     /* background-image: url("/img/questpage.png");
      background-repeat: no-repeat;
@@ -28,6 +33,12 @@
 
 .questPageImage {
     width: 100%;
+
+
+}
+
+.questPageImage-2 {
+    width: 50%;
 
 }
 
@@ -47,34 +58,106 @@
     z-index: 2;
     position: absolute;
     top: 5%;
-    /*left: 15%;*/
-    display: block;
+
+
     width: 50%;
     max-height: 85%;
-    overflow-y: auto;
-    border: 1px;
 }
+
+.abort-button{
+
+    position: absolute;
+    top: 60%;
+    width: 35%;
+    margin-left: -18%;
+
+
+}
+
+.profile-header{
+    position: absolute;
+    top: 5%;
+    margin-left: -18%;
+    width: 35%;
+}
+
+.profile-table{
+    position: absolute;
+    top: 20%;
+    margin-left: 30%;
+    width: 40%;
+    font-family: 'rageitalic';
+    font-size: 1.1vw;
+}
+
+.change-form{
+    position: absolute;
+    margin-left: 25%;
+    top: 20%;
+    width: 40%;
+    margin-left: 30%;
+    text-align: left;
+    font-family: 'baskvill';
+    font-size: 1.5vw;
+    max-height: 70%;
+
+
+}
+
+.change-form change-input{
+    position: relative;
+    width: 100%;
+
+
+    margin-left: 10%;
+
+    resize: vertical;
+
+}
+
+
+.change-form input{
+    position: relative;
+    width: 100%;
+    padding: 3%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+
+}
+
+.change-form img{
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+}
+
 
 .dragonLogo {
     margin-top: 28%;
     width: 70%;
+
 }
 
 .level {
     width: 80%;
     margin-top: -10%;
+
 }
 
 #quest-detail {
     z-index: 2;
     position: absolute;
-    top: 5%;
+    top: 2%;
     left: 51%;
     display: block;
     width: 50%;
-    height: 540px;
+    height: 90%;
     overflow-y: auto;
     border: 1px;
+
+
 
 }
 
@@ -89,6 +172,7 @@
     font-family: 'rageitalic';
     display: none;
 }
+
 
 
 .login {
@@ -155,6 +239,9 @@
     max-height: 500px;
 }
 
+
+
+
 .text {
     z-index: 99;
     float: left;
@@ -169,13 +256,11 @@
 }
 
 .button {
-    z-index: 99;
-    margin: 10px;
-    padding: 10px;
-    padding-top: 20px;
-    width: 478px;
-    height: 135px;
+    z-index: 2;
+    width: 80%;
+    height: 25%;
     text-align: center;
+
 }
 
 .loginbtn {
@@ -189,16 +274,25 @@
     padding: 5%;
     padding-top: 6%;
     width: 77%;
-    height: 75px;
+
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
     background-size: 100%;
     /*border: #1b1e21 3px solid;*/
 
-    font-size: 25px;
-    font-family: 'rageitalic';
+
 
 }
+
+.change-pass-button{
+    position: absolute;
+
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 8%;
+}
+
+
 
 
 #btn-menu {
@@ -284,6 +378,49 @@ hr.white {
     border-top: 0.5px solid white;
 }
 
+.subject-header{
+    position: absolute;
+    top: 1%;
+    font-family: 'baskvill';
+    font-size: 1.5vw;
+    margin-left: 34%;
+}
+
+.subject-btn{
+
+    position: relative;
+
+    /*border: #1b1e21 3px solid;*/
+
+
+
+
+
+}
+
+.subject-content{
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    width: 98%;
+    max-height: 70%;
+
+
+}
+
+.subject-text{
+    position: absolute;
+    top: 36%;
+    margin-left: -42%;
+    font-size: 1.5vw;
+    font-family: 'rageitalic';
+    text-align: center;
+
+    width: 35%;
+
+}
+
+
 @media screen and (max-width: 500px) {
     #navmenu {
         padding-top: 15px;
@@ -323,7 +460,7 @@ hr.white {
 
 /* scrollbar width */
 .custom-scrollbar-css::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 }
 
 /* scrollbar track */
@@ -339,4 +476,7 @@ hr.white {
 
 
 }
+
+
+
 

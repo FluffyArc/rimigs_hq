@@ -25,6 +25,12 @@ class CreateForeignKeyForPostsTable extends Migration
                 ->on('quests')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->foreign('id_subject')
+                ->references('id')
+                ->on('subjects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

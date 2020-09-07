@@ -8,14 +8,17 @@
                 <img src="{{ asset('img/logo.png') }}" class="logo">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <hr class="white">
-                <a href="#">Profile</a>
+                <a href="{{route('profile')}}">Profile</a>
                 <hr class="white">
-                <a href="{{route('questLevel')}}">Quests</a>
+                {{--<a href="{{route('questLevel')}}">Quests</a>--}}
+                <a href="{{route('subjects')}}">Quests</a>
                 <hr class="white">
                 <a href="{{route('questTaken')}}">Quest Taken</a>
                 <hr class="white">
+                @if(!Auth::check())
                 <a href="{{route('clientLogin')}}">Sign In</a>
                 <hr class="white">
+                @endif
                 <a href="{{ route('logout') }}">Sign Out</a>
                 <hr class="white">
 

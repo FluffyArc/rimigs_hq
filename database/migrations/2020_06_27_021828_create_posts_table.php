@@ -17,10 +17,11 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_quest');
+            $table->unsignedBigInteger('id_subject');
             $table->date('exp_date');
             $table->date('complete_date')->nullable();
             $table->boolean('ongoing');
-            //$table->string('status');
+            $table->string('status');
             $table->timestamps();
 
         });
