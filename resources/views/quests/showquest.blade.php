@@ -4,7 +4,18 @@
 @section('content')
     <div class="card-body">
         <h1>All Quest</h1>
-        <p>{{session('mssg')}}</p>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead align="center">

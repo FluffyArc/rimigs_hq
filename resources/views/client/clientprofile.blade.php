@@ -44,6 +44,13 @@
                             <td colspan="2">{{$subject->subject_name}}</td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="2">
+                            <a href="{{route('changepass')}}">
+                                <img src="{{asset('../img/change-pass-button.png')}}" class="change-pass-button">
+                            </a>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>

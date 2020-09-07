@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,7 +15,13 @@ class UserController extends Controller
     }
 
     public function user(){
-        return view('users.user');
+        $users = DB::table('users')
+            ->select('users.*')
+            ->where('user_type','=','student')
+            ->orderByDesc('exp')
+            ->get();
+
+        return view('users.user', compact(['users']));
     }
 
     public function students()

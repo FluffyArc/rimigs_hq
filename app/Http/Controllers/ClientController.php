@@ -11,8 +11,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
-
+use Illuminate\Support\Facades\Hash;
 
 
 class ClientController extends Controller
@@ -162,11 +161,13 @@ class ClientController extends Controller
     public function profile(){
 
 
-        $subjects = DB::table('posts')
-            ->select('posts.*', 'subjects.subject_name')
+        $subject = DB::table('posts')
+            ->select('subjects.subject_name')
             ->join('subjects','posts.id_subject','subjects.id')
-            ->where('id_user','=',Auth::user()->id)
+            ->where('posts.id_user','=',Auth::user()->id)
             ->get();
+
+        $subjects = $subject->unique();
 
         return view('client.clientprofile', compact(['subjects']));
     }
@@ -175,5 +176,30 @@ class ClientController extends Controller
         $subjects = Subject::all();
 
         return view('client.clientchoosesubject', compact(['subjects']));
+    }
+
+    public function changepass(){
+        return view('client.clientchangepassword');
+    }
+
+    public function updatepass(Request $request){
+        $user = User::findOrFail($request->id);
+
+        //$user->password = Hash::make($request->newpass);
+        $user->password = Hash::make($request->newpass);
+
+        if(Hash::check($request->currpass, Auth::user()->password)){
+            if($request->newpass == $request->confirmpass){
+                $user->save();
+                return response()->json(['success'=>'Password changed successfully']);
+            }
+            else{
+                return response()->json(['failed'=>'Password changed failed. Make sure you type the correct password']);
+            }
+        }
+        else{
+            return response()->json(['failed'=>'Password changed failed. Make sure you type the correct password']);
+        }
+
     }
 }

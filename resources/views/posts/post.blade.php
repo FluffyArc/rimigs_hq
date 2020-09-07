@@ -23,8 +23,14 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->exp_date}}</td>
                         <td>{{$post->complete_date}}</td>
-                        @if($post->ongoing == 1)
-                            <td align="center"><img src="img/ongoing-stamp.png" width="100px"> </td>
+                        @if($post->ongoing == 0)
+                            <td align="center"><img src="{{asset('../img/complete-stamp.png')}}" width="100px"></td>
+                        @elseif($post->ongoing == 1)
+                            <td align="center"><img src="{{asset('../img/ongoing-stamp.png')}}" width="100px"></td>
+                        @elseif($post->ongoing == 2)
+                            <td align="center"><img src="{{asset('../img/abort-stamp.png')}}" width="100px"></td>
+                        @elseif($post->ongoing == 3)
+                            <td align="center"><img src="{{asset('../img/failed-stamp.png')}}" width="100px"></td>
                         @endif
                     </tr>
                 @endforeach
