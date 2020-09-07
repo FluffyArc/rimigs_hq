@@ -5,7 +5,19 @@
     <form action="{{route('postQuest')}}" method="post">
         @csrf
         <div class="form-group">
-            <p>{{session('mssg')}}</p>
+
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <h1>Post Quest</h1>
             <div class="form-group">
                 <label>Student Name</label>

@@ -1,96 +1,302 @@
+body{
+    background-image: url("../img/bg.png");
+}
+
 #header {
-	top: 0;
+    top: 0;
 }
 
 #board {
-	padding: 40px;
-	padding-top: 100px;
-	z-index: 1;
-	position: relative;
+    /*padding: 50%;*/
+    /* padding-left: 55.5%;
+     padding-top: 31.5%;*/
+
+    position: relative;
+    margin-top: 3%;
+    margin-left: 18%;
+
+    width: 60%;
+    z-index: 1;
+    position: absolute;
+
+    /* background-image: url("/img/questpage.png");
+     background-repeat: no-repeat;
+     width: 100%;
+     height: auto;*/
+
 }
 
+.bgimage {
+    width: 100%;
+    height: auto;
+}
+
+.questPageImage {
+    width: 100%;
+
+
+}
+
+.questPageImage-2 {
+    width: 50%;
+
+}
+
+
 #board-content {
-	z-index: 2;
-	position: absolute;
-	top: 19%;
-	left: 10%;
-	display: block;
-	width: 1220px;
-	height: 507px;
-	overflow-y: auto;
+    z-index: 2;
+    position: absolute;
+    top: 19%;
+    left: 10%;
+    display: block;
+    width: 1220px;
+    height: 507px;
+    overflow-y: auto;
 }
 
 #quest-content {
-  z-index: 2;
-  position: absolute;
-  top: 110px;
-  left: 170px;
-  display: block;
-  width: 560px;
-  height: 650px;
-  overflow-y: auto;
-  border: 1px;
+    z-index: 2;
+    position: absolute;
+    top: 5%;
+
+
+    width: 50%;
+    max-height: 85%;
+}
+
+.abort-button{
+
+    position: absolute;
+    top: 60%;
+    width: 35%;
+    margin-left: -18%;
+
+
+}
+
+.profile-header{
+    position: absolute;
+    top: 5%;
+    margin-left: -18%;
+    width: 35%;
+}
+
+.profile-table{
+    position: absolute;
+    top: 20%;
+    margin-left: 30%;
+    width: 40%;
+    font-family: 'rageitalic';
+    font-size: 1.1vw;
+}
+
+.change-form{
+    position: absolute;
+    margin-left: 25%;
+    top: 20%;
+    width: 40%;
+    margin-left: 30%;
+    text-align: left;
+    font-family: 'baskvill';
+    font-size: 1.5vw;
+    max-height: 70%;
+
+
+}
+
+.change-form change-input{
+    position: relative;
+    width: 100%;
+
+
+    margin-left: 10%;
+
+    resize: vertical;
+
+}
+
+
+.change-form input{
+    position: relative;
+    width: 100%;
+    padding: 3%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+
+}
+
+.change-form img{
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+.dragonLogo {
+    margin-top: 28%;
+    width: 70%;
+
+}
+
+.level {
+    width: 80%;
+    margin-top: -10%;
+
 }
 
 #quest-detail {
-  z-index: 2;
-  position: absolute;
-  top: 120px;
-  left: 750px;
-  display: block;
-  width: 560px;
-  height: 640px;
-  overflow-y: auto;
-  border: 1px;
+    z-index: 2;
+    position: absolute;
+    top: 2%;
+    left: 51%;
+    display: block;
+    width: 50%;
+    height: 90%;
+    overflow-y: auto;
+    border: 1px;
+
+
+
 }
+
+.btn-post {
+    width: 40%;
+    display: none;
+
+}
+
+.post-text{
+    margin-top: -11.5%;
+    font-family: 'rageitalic';
+    display: none;
+}
+
+
 
 .login {
-  padding: 40px;
-  padding-top: 30px;
-  margin-top: 100px;
-  z-index: 1;
-  width: 300px;
-  height: 500px;
-  background-color: #000;
-  position: relative;
-  color: #fff;
+
+    padding: 40px;
+    padding-top: 30px;
+    margin-top: 100px;
+    z-index: 1;
+    width: 500px;
+    min-height: 550px;
+    background-color: #e09462;
+    position: relative;
+    color: #fff;
+    border-radius: 25px;
 }
 
+.login .label{
+    float: left;
+}
+
+.questTakenTitle{
+    z-index: 2;
+    position: absolute;
+    top: 1%;
+
+    font-size: 1.5vw;
+    width: 100%;
+    overflow-y: auto;
+    font-family: 'baskvill';
+
+}
+
+.questTakenContent{
+    z-index: 2;
+    position: absolute;
+    top: 15%;
+    margin-left: 1%;
+
+    width: 90%;
+    overflow-y: auto;
+
+
+    font-family: 'baskvill';
+    font-size: 1.5vw;
+    text-align: left;
+
+}
+
+.table-quest th{
+    font-size: 1.5vw;
+    font-family: 'baskvill';
+}
+
+.table-quest td{
+    font-size: 1.2vw;
+    font-family: 'rageitalic'
+}
+
+.table-quest{
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    max-height: 500px;
+}
+
+
+
+
 .text {
-	z-index: 99;
-	float: left;
-	margin :30px;
-	padding: 10px;
-	padding-top: 30px;
-	width: 268px;
-	height: 298px;
-	text-align: center;
+    z-index: 99;
+    float: left;
+    margin: 30px;
+    padding: 10px;
+    padding-top: 30px;
+    width: 268px;
+    height: 298px;
+    text-align: center;
     font-family: GameCube;
     font-size: 25px;
 }
 
 .button {
-  z-index: 99;
-  margin :10px;
-  padding: 10px;
-  padding-top: 60px;
-  width: 478px;
-  height: 135px;
-  text-align: center;
+    z-index: 2;
+    width: 80%;
+    height: 25%;
+    text-align: center;
+
+}
+
+.loginbtn {
+  width: 40%;
 }
 
 .button2 {
-  z-index: 99;
-  margin :10px;
-  padding: 10px;
-  padding-top: 30px;
-  width: 388px;
-  height: 37px;
-  text-align: center;
+    z-index: 99;
+    margin: 1%;
+
+    padding: 5%;
+    padding-top: 6%;
+    width: 77%;
+
+    background-image: url("../img/button2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*border: #1b1e21 3px solid;*/
+
+
+
 }
 
+.change-pass-button{
+    position: absolute;
+
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 8%;
+}
+
+
+
+
 #btn-menu {
-	cursor: pointer;
+    cursor: pointer;
     position: fixed;
     top: 0;
     right: 6vw;
@@ -100,81 +306,177 @@
 }
 
 #navmenu {
-	background-color: #000;
-	display: none;
-	padding-top: 50px;
-	width: 100vw;
-	height:100vh;
+    background-color: #000;
+    display: none;
+    padding-top: 50px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.board-img {
+    z-index: 1;
+    position: absolute;
+    height: auto;
+}
+
+.textInButton {
+    text-decoration: none;
+    color: black;
 }
 
 .content {
-	width: 300px;
-	margin-top: 100px;
-	margin-left:auto;
-	margin-right: auto;
+    width: 300px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #navmenu a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #aaaaaa;
-  display: block;
-  border: none;
-  background: none;
-  width:100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-  transition: 0.3s;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #aaaaaa;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
 }
 
 .dropdown-content {
-  display: none;
-  padding-left: 8px;
+    display: none;
+    padding-left: 8px;
 }
 
 #navmenu a:hover, dropdown-btn:hover {
-  color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 #navmenu .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  text-align: right;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    text-align: right;
 }
+
 #navmenu .logo {
-  position: absolute;
-  top: 40px;
-  left: 25px;
-  margin-left: 50px;
-  text-align: left;
-  max-width: 50px;
-  max-height: 70px;
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    margin-left: 50px;
+    text-align: left;
+    max-width: 50px;
+    max-height: 70px;
 }
-hr.white{
-  border-top:0.5px solid white;
+
+hr.white {
+    border-top: 0.5px solid white;
 }
+
+.subject-header{
+    position: absolute;
+    top: 1%;
+    font-family: 'baskvill';
+    font-size: 1.5vw;
+    margin-left: 34%;
+}
+
+.subject-btn{
+
+    position: relative;
+
+    /*border: #1b1e21 3px solid;*/
+
+
+
+
+
+}
+
+.subject-content{
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    width: 98%;
+    max-height: 70%;
+
+
+}
+
+.subject-text{
+    position: absolute;
+    top: 36%;
+    margin-left: -42%;
+    font-size: 1.5vw;
+    font-family: 'rageitalic';
+    text-align: center;
+
+    width: 35%;
+
+}
+
 
 @media screen and (max-width: 500px) {
-  #navmenu {padding-top: 15px;}
-  .content {margin-left: 20px;}
-  #navmenu a {font-size: 18px;}
-  #quest-content {left: 12%;}
+    #navmenu {
+        padding-top: 15px;
+    }
+
+    .content {
+        margin-left: 20px;
+    }
+
+    #navmenu a {
+        font-size: 18px;
+    }
+
+    #quest-content {
+        left: 12%;
+    }
 }
 
 @font-face {
-  font-family: 'rageitalic';
-  src: url("../font/papyrus.ttf");
+    font-family: 'rageitalic';
+    src: url("../font/papyrus.ttf");
 
 }
 
 
 @font-face {
-  font-family: 'baskvill';
-  src: url("../font/monsterhunter.ttf");
+    font-family: 'baskvill';
+    src: url("../font/monsterhunter.ttf");
 
 }
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #a44200;
+    background-image: linear-gradient(315deg, #a44200 0%, #f2c17d 74%);
+
+
+}
+
+
+
+

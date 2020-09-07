@@ -4,9 +4,21 @@
 @section('content')
     <div class="card-body">
         <h1>Subject</h1>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
         <a class="btn btn-primary" href="{{route('subjectForm')}}" role="button">Add New Subject</a>
 
-        <p class="text-muted">{{session('mssg')}}</p>
+
 
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

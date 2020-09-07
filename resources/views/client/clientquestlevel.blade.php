@@ -1,26 +1,104 @@
 @extends('base')
 @extends('client.navclient')
 @section('content')
-<center>
-<div class="col-md-12" id="board" >
-	<img src="{{ asset('img/questpage.png') }}" >	
-	<div id="quest-content">
-		<img src="{{ asset('img/Dragons.png') }}" style="padding-top: 150px;">
-	</div>
-	<div id="quest-detail">
-	<p><h1 style="text-align: center; padding-left: 30px; ">Choose a level</p></h1>
-		<div class="button" style="background-image: url('img/button.png');">
-			<h2>*</h2>
-		</div>
-		<div class="button" style="background-image: url('img/button.png');">
-			<h2>**</h2>
-		</div>		
-		<div class="button" style="background-image: url('img/button.png');">
-			<h2>***</h2>
-		</div>		
-	</div>
+    <center>
+        <div class="col-md-12" id="board">
+            <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
+            <div id="quest-content">
+                <img src="{{ asset('img/Dragons.png') }}" class="dragonLogo">
+            </div>
+            <div id="quest-detail" class="custom-scrollbar-css">
+                <h1 style="text-align: center; font-size: 2vw; ">Choose a level</h1><br>
+                    @if($level <= 20)
+                    <div class="button">
+                        <a href="{{route('questList',[1,$subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
+                    </div>
+                    @endif
+                    @if($level > 20 && $level <=40)
+                        <div class="button">
+                            <a href="{{route('questList',[1, $subject])}}">
+                                <img src="../img/level-1.png" class="level">
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="{{route('questList',[2, $subject])}}">
+                                <img src="../img/level-2.png" class="level">
+                            </a>
+                        </div>
+                    @endif
+                    @if($level > 40 && $level <=60)
+                    <div class="button">
+                        <a href="{{route('questList',[1, $subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[3, $subject])}}">
+                            <img src="../img/level-3.png" class="level">
+                        </a>
+                    </div>
+                    @endif
+                    @if($level > 60 && $level <= 80)
+                    <div class="button">
+                        <a href="{{route('questList',[1, $subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[3, $subject])}}">
+                            <img src="../img/level-3.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[4, $subject])}}">
+                            <img src="../img/level-4.png" class="level">
+                        </a>
+                    </div>
+                    @endif
+                    @if($level > 80)
+                    <div class="button">
+                        <a href="{{route('questList',[1, $subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[3, $subject])}}">
+                            <img src="../img/level-3.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[4, $subject])}}">
+                            <img src="../img/level-4.png" class="level">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="{{route('questList',[5, $subject])}}">
+                            <img src="../img/level-5.png" class="level">
+                        </a>
+                    </div>
+                    @endif
 
-</div>
 
-</center>
+            </div>
+
+        </div>
+
+    </center>
 @endsection
