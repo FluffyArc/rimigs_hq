@@ -46,24 +46,27 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(
     Route::get('questForm', 'QuestController@form')->name('questForm');
     Route::get('questForm', 'SubjectController@getSubjectName')->name('questForm');
 
-    Route::get('subjects', 'SubjectController@index')->name('subjects');
+    Route::get('adminSubjects', 'SubjectController@index')->name('adminSubjects');
     Route::get('subjectForm','SubjectController@form')->name('subjectForm');
     Route::get('showQuest', 'QuestController@showQuest')->name('showQuest');
 
-    Route::get('showQuestById/{id}', 'PostController@studentsAndQuestsById');
+    Route::get('showQuestById/{id}/{subject}', 'PostController@studentsAndQuestsById');
     Route::get('editQuest/{id}', 'QuestController@editQuest')->name('editQuest');
 
     Route::get('posts','PostController@index')->name('posts');
-
+    Route::get('postgrade/{post}','PostController@postgrade')->name('postgrade');
     Route::get('postForm','PostController@form')->name('postForm');
     Route::get ('userForm', 'UserController@index')->name('userForm');
     Route::get('users', 'UserController@user')->name('users');
+    Route::get('detailuser/{user}','UserController@detailuser')->name('detailuser');
 
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
     Route::post('postQuest','PostController@postQuest')->name('postQuest');
     Route::post('updateQuest/{id}', 'QuestController@updateQuest')->name('updateQuest');
     Route::post('addStudent','UserController@addStudent')->name('addStudent');
+
+    Route::post('grade','PostController@grade')->name('grade');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 

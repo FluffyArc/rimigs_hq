@@ -47,7 +47,11 @@
                 <input type="date" class="form-control" id="level" name="completeDate" placeholder="Level">
             </div>
         </div>
-
+        <div class="form-group">
+            <label>Subject</label>
+            <input type="input" class="form-control" id="subjectname" name="subjectname" readonly
+                   value="{{$subject->subject_name}}">
+        </div>
         <button type="submit" class="btn btn-primary">Post Quest</button>
     </form>
 @endsection

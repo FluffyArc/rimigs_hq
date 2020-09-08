@@ -28,7 +28,7 @@ class SubjectController extends Controller
 
         $subject->save();
 
-        return redirect('/subjects')->with('mssg', 'Subject Added Successfully');
+        return redirect('adminSubjects')->with('success', 'Subject Added Successfully');
     }
 
     public function getSubjectName(){

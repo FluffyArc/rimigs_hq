@@ -44,7 +44,9 @@
                                     @elseif($quest->ongoing == 1)
                                         <td>Ongoing</td>
                                     @elseif($quest->ongoing == 2)
-                                        <td>Aborted/Failed</td>
+                                        <td>Aborted</td>
+                                    @elseif($quest->ongoing == 3)
+                                        <td>Failed</td>
                                     @endif
                                 </tr>
                             @endforeach
