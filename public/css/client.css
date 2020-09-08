@@ -42,6 +42,11 @@ body{
 
 }
 
+.img-stamp{
+    width: 20%;
+
+    border: #0f6674 2px solid;
+}
 
 #board-content {
     z-index: 2;
@@ -183,7 +188,10 @@ body{
     z-index: 1;
     width: 500px;
     min-height: 550px;
-    background-color: #e09462;
+    background-color: #772f1a;
+    background-image: linear-gradient(315deg, #772f1a 0%, #f2a65a 74%);
+
+
     position: relative;
     color: #fff;
     border-radius: 25px;
@@ -228,7 +236,14 @@ body{
 
 .table-quest td{
     font-size: 1.2vw;
-    font-family: 'rageitalic'
+    font-family: 'rageitalic';
+
+
+}
+
+.table-quest td img{
+    width: 50%;
+
 }
 
 .table-quest{
@@ -236,7 +251,8 @@ body{
     z-index: 2;
     position: absolute;
     top: 20%;
-    max-height: 500px;
+    max-height: 70%;
+
 }
 
 
