@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                @if(Auth::check('user_type') == 'teacher')
+                @if(Auth::check() && Auth::user()->user_type == 'teacher')
                 <a class="nav-link" href="{{route('home')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
@@ -45,7 +45,7 @@
                 </a>
 
 
-            @elseif(Auth::check('user_type') == 'asistant')
+            @elseif(Auth::check() && Auth::user()->user_type == 'assistant')
 
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

@@ -126,6 +126,10 @@
                                     swal(data.success, {
                                         icon: "success",
                                     });
+
+                                    setTimeout(function () {
+                                        window.location.href = "{{route('posts')}}";
+                                    }, 3000);
                                 }
 
                             },

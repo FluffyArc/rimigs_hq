@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class Student
+class Assistant
 {
     /**
      * Handle an incoming request.
@@ -16,18 +16,15 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect()->route('clientLogin');
-        }
-        if (\Illuminate\Support\Facades\Auth::user()->user_type == 'teacher' || Auth::user()->user_type == 'assistant') {
+
+        if (Auth::user()->user_type == 'teacher' || Auth::user()->user_type == 'assistant') {
             return redirect()->route('home');
         }
-       /* if (Auth::user()->user_type == 'assistant') {
-            return redirect()->route('posts');
+        /*if (Auth::user()->user_type == 'assistant') {
+            return $next($request);
         }*/
         if (Auth::user()->user_type == 'student') {
-            return $next($request);
+            return redirect()->route('subjects');
         }
-
     }
 }

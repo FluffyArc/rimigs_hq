@@ -36,9 +36,7 @@ Route::post('admin/register','Auth\RegisterController@register');
    Route::get('permissions-admin',['middleware'=>'check-permission:admin','uses'=>'HomeController@index']);
    Route::get('permissions-user',['middleware'=>'check-permission:user','uses'=>'HomeController@user']);
 });*/
-
-Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(){
-    //Admin Routes
+Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/user', 'HomeController@user')->name('user');
@@ -56,7 +54,7 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(
     Route::get('posts','PostController@index')->name('posts');
     Route::get('postgrade/{post}','PostController@postgrade')->name('postgrade');
     Route::get('postForm','PostController@form')->name('postForm');
-    Route::get ('userForm', 'UserController@index')->name('userForm');
+    Route::get ('userForm', 'UserController@index')->name('userForm')->middleware('admin');
     Route::get('users', 'UserController@user')->name('users');
     Route::get('detailuser/{user}','UserController@detailuser')->name('detailuser');
 
@@ -69,11 +67,9 @@ Route::group(['middleware'=>['prevent-back-history','auth', 'admin']], function(
     Route::post('grade','PostController@grade')->name('grade');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
-
-
 });
 
-Route::group(['middleware'=>['prevent-back-history','auth', 'student']], function(){
+Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
     //Student Routes
 
     Route::get('questList/{level}/{subject}','ClientController@quest')->name('questList');

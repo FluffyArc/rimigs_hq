@@ -39,7 +39,8 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Expired Date</label>
-                <input type="input" class="form-control" id="exp" name="expiredDate" placeholder="Experience Point" readonly
+                <input type="input" class="form-control" id="exp" name="expiredDate" placeholder="Experience Point"
+                       readonly
                        value="{{$date}}">
             </div>
             <div class="form-group col-md-6">
@@ -52,6 +53,10 @@
             <input type="input" class="form-control" id="subjectname" name="subjectname" readonly
                    value="{{$subject->subject_name}}">
         </div>
-        <button type="submit" class="btn btn-primary">Post Quest</button>
+        @if(Auth::user()->user_type == 'teacher')
+            <button type="submit" class="btn btn-primary">Post Quest</button>
+        @elseif(Auth::user()->user_type == 'assistant')
+            <button type="submit" class="btn btn-primary" disabled>Post Quest
+        @endif
     </form>
 @endsection

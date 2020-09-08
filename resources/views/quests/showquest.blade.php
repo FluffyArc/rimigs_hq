@@ -4,6 +4,7 @@
 @section('content')
     <div class="card-body">
         <h1>All Quest</h1>
+
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -44,7 +45,12 @@
                         <td align="center">{{$quest->days_required}}</td>
                         <td>{{$quest->subject->subject_name}}</td>
                         <td align="center">
-                            <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}/{{$quest->id_subject}}" role="button">POST</a>
+                            @if(Auth::user()->user_type == 'teacher')
+                                <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}/{{$quest->id_subject}}"
+                                   role="button">POST</a>
+                            @elseif(Auth::user()->user_type == 'assistant')
+                                <a class="btn btn-primary disabled" role="button" >POST</a>
+                            @endif
                         </td>
                         <td align="center">
                             <a class="btn btn-primary" href="/editQuest/{{$quest->id}}" role="button">UPDATE</a>

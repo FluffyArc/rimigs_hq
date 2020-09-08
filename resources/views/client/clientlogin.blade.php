@@ -8,16 +8,16 @@
             <form method="POST" action="{{route('clientLogin')}}">
                 @csrf
                 <div class="form-group">
-                    <label for="email" class="label"><h2>Email</h2></label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                           name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                           placeholder="Email">
+                    <label for="username" class="label"><h4>Username</h4></label>
+                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username"
+                           value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                    @error('email')
+                    @error('username')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
+
 
                 </div>
                 <div class="form-group">
