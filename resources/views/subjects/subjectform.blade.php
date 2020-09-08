@@ -13,6 +13,11 @@
             <label>Subject Credit</label>
             <input type="number" class="form-control" id="credit" name="credit" placeholder="Subject Credit">
         </div>
-        <button type="submit" class="btn btn-primary">Add Subject</button>
+        @if(Auth::user()->user_type == 'teacher')
+            <button type="submit" class="btn btn-primary">Add Subject</button>
+        @elseif(Auth::user()->user_type == 'assistant')
+            <button type="submit" class="btn btn-primary" disabled>Add Subject</button>
+        @endif
+
     </form>
 @endsection

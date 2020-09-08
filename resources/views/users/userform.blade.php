@@ -35,7 +35,10 @@
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                    placeholder="Confirm Password">
         </div>
-
-        <button type="submit" class="btn btn-primary">Add New Student</button>
+        @if(Auth::user()->user_type == 'teacher')
+            <button type="submit" class="btn btn-primary">Add New Student</button>
+        @elseif(Auth::user()->user_type == 'assistant')
+            <button type="submit" class="btn btn-primary" disabled>Add New Student</button>
+        @endif
     </form>
 @endsection

@@ -3,28 +3,52 @@
 
 @section('content')
     <div class="card-body">
-        <h1>Students List</h1>
+        <h1>Students Detail</h1>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Hunter Rank</th>
-                <?php $no = 1; ?>
-                </thead>
+            <table border="0" class="table table-bordered" id="dataTable">
+                <tr>
+                    <td>Name</td>
+                    <td>{{$user->name}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{$user->email}}</td>
+                </tr>
+                <tr>
+                    <td>Experience Point</td>
+                    <td>{{$exp}}</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    @if(Auth::user()->exp <= 20)
+                        <td>1</td>
+                    @elseif(Auth::user()->exp > 20 && Auth::user()->exp <=40)
+                        <td>2</td>
+                    @elseif(Auth::user()->exp > 40 && Auth::user()->exp <=60)
+                        <td>3</td>
+                    @elseif(Auth::user()->exp > 60 && Auth::user()->exp <=80)
+                        <td>4</td>
+                    @elseif(Auth::user()->exp > 80)
+                        <td>5</td>
+                    @endif
 
-                <tbody>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{$no++}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->exp}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Subjects</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ol>
+                        @foreach($subjects as $subject)
 
-                    </tr>
-                @endforeach
-                </tbody>
+                                <li>{{$subject->subject_name}}</li>
+
+                        @endforeach
+                        </ol>
+                    </td>
+                </tr>
+
+
             </table>
         </div>
     </div>

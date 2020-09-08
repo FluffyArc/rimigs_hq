@@ -94,7 +94,7 @@ class ClientController extends Controller
         $post->exp_date = $date;
 
         $post->ongoing = "1";
-        $post->exp = $request->exp;
+        //$post->exp = $request->exp;
 
         $check = DB::table('posts')
             ->select('posts.*')

@@ -30,7 +30,7 @@
                             </tr>
                             @foreach($quests as $quest)
                                 <tr>
-                                    <td>{{++$no}}</td>
+                                    <td align="center">{{++$no}}</td>
                                     <td>
                                         <a href="{{route('detail',$quest->id_quest)}}"
                                            style="text-decoration: none; color: black">
@@ -39,12 +39,17 @@
                                     </td>
                                     <td>{{date('d-m-Y', strtotime($quest->exp_date))}}</td>
                                     <td>{{$quest->complete_date}}</td>
+
                                     @if($quest->ongoing == 0)
-                                        <td>Completed</td>
+                                        <td align="center" width="15%">
+                                            <img src="{{asset('../img/quest-clear.png')}}">
+                                        </td>
                                     @elseif($quest->ongoing == 1)
                                         <td>Ongoing</td>
                                     @elseif($quest->ongoing == 2)
-                                        <td>Aborted/Failed</td>
+                                        <td>Aborted</td>
+                                    @elseif($quest->ongoing == 3)
+                                        <td>Failed</td>
                                     @endif
                                 </tr>
                             @endforeach

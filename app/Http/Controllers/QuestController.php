@@ -25,7 +25,7 @@ class QuestController extends Controller
 
         $quest->save();
 
-        return redirect('showQuest')->with('mssg','Quest Added Successfully');
+        return redirect('showQuest')->with('success','Quest Added Successfully');
     }
 
     public function showQuest(){
@@ -60,13 +60,13 @@ class QuestController extends Controller
         $quests->id_subject = $request->subject;
 
         $quests->save();
-        return redirect('showQuest')->with('mssg','Quest Updated Successfully');
+        return redirect('showQuest')->with('success','Quest Updated Successfully');
     }
 
     public function destroyQuest($id){
         $quests = Quest::findOrFail($id);
         $quests->delete();
-        return redirect('showQuest')->with('mssg','Quest Deleted Successfully');
+        return redirect('showQuest')->with('success','Quest Deleted Successfully');
     }
 
 }

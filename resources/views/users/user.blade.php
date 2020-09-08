@@ -18,7 +18,12 @@
                 @foreach($users as $user)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$user->name}}</td>
+                        <td>
+                            <a href="{{route('detailuser',$user->name)}}" style="color: black">
+                            {{$user->name}}
+                            </a>
+                        </td>
+
                         <td>{{$user->email}}</td>
                         <td>{{$user->exp}}</td>
 

@@ -16,18 +16,22 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
-        <a class="btn btn-primary" href="{{route('subjectForm')}}" role="button">Add New Subject</a>
 
+        @if(Auth::user()->user_type == 'teacher')
+            <a class="btn btn-primary" href="{{route('subjectForm')}}" role="button">Add New Subject</a>
+        @elseif(Auth::user()->user_type == 'assistant')
+            <a class="btn btn-primary disabled" role="button">Add New Subject</a>
+        @endif
 
 
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-            <th>No</th>
-            <th>Subject Name</th>
-            <th>Subject Credit</th>
-            <?php $no = 1; ?>
-            </thead>
+                <thead>
+                <th>No</th>
+                <th>Subject Name</th>
+                <th>Subject Credit</th>
+                <?php $no = 1; ?>
+                </thead>
                 <tbody>
                 @foreach($subjects as $subject)
                     <tr>
