@@ -72,6 +72,10 @@ class PostController extends Controller
         $post->ongoing = "1";
         $post->exp = $questid->exp;
 
+        $checkQuestMax = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_quest','=',$questid->id)
+            ->get();
 
         $check = DB::table('posts')
             ->select('posts.*')
@@ -94,8 +98,12 @@ class PostController extends Controller
 
         }
         else{
-            $post->save();
-            return redirect('posts')->with('success', 'Post Added Successfully');
+            if($checkQuestMax->count() >= $questid->max_player)
+                return redirect('posts')->with('error', 'This quest already reached its maximum player');
+            else {
+                $post->save();
+                return redirect('posts')->with('success', 'Post Added Successfully');
+            }
             //return response()->json(['success'=>$check->count()]);
         }
     }
@@ -112,7 +120,7 @@ class PostController extends Controller
 
 
         $date = Carbon::now()->format('d-M-Y');
-        return view('posts.postgrade', compact(['date','post', 'expdate']));
+        return view('posts.postgrade', compact(['date','post']));
     }
 
     public function grade(Request $request){

@@ -47,9 +47,13 @@
                                     @elseif($quest->ongoing == 1)
                                         <td>Ongoing</td>
                                     @elseif($quest->ongoing == 2)
-                                        <td>Aborted</td>
+                                        <td>
+                                            <img src="{{asset('../img/quest-abort.png')}}">
+                                        </td>
                                     @elseif($quest->ongoing == 3)
-                                        <td>Failed</td>
+                                        <td>
+                                            <img src="{{asset('../img/quest-failed.png')}}">
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

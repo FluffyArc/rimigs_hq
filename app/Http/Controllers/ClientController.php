@@ -96,6 +96,14 @@ class ClientController extends Controller
         $post->ongoing = "1";
         //$post->exp = $request->exp;
 
+        $quest = Quest::findOrFail($request->id_quest);
+
+        $checkQuestMax = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_quest','=',$request->id_quest)
+            ->where('ongoing','=','1')
+            ->get();
+
         $check = DB::table('posts')
             ->select('posts.*')
             ->where('id_user','=',$request->id_user)
@@ -115,8 +123,12 @@ class ClientController extends Controller
             return response()->json(['failed'=>'You already complete this quest']);
         }
         else{
-            $post->save();
-            return response()->json(['success'=>'Quest Posted']);
+            if($checkQuestMax->count() >= $quest->max_player)
+                return response()->json(['failed' => 'Sorry, this quest already reach its maximum player']);
+            else {
+                $post->save();
+                return response()->json(['success' => 'Quest Posted']);
+            }
             //return response()->json(['success'=>$check->count()]);
         }
 

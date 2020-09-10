@@ -125,6 +125,7 @@
                                         swal(data.success, {
                                             icon: "success",
                                         });
+                                        console.log(data.success)
                                     }
 
                                     //alert(data.success);
