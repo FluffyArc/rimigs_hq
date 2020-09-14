@@ -7,7 +7,7 @@
         <div class="col-md-12" id="board">
             <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
 
-            <div id="quest-content" class="custom-scro llbar-css">
+            <div id="quest-content" class="custom-scrollbar-css">
                 <h1 style="font-family: 'baskvill'; font-size: 2vw">Quest Selector</h1>
 
                 @foreach($levels as $level)
@@ -33,14 +33,8 @@
 
             <div id="quest-detail">
                 <div style="font-family: 'baskvill'; font-size: 1.5vw;"><h1>Quest Detail</h1></div>
-                <div style="font-family: 'rageitalic'; font-size: 1.5vw;">
-                    {{--He had done everything right. There had been no mistakes throughout the entire process. It had been
-                    perfection and he knew it without a doubt, but the results still stared back at him with the fact
-                    that he had lost.
-                    Her mom had warned her. She had been warned time and again, but she had refused to believe her. She
-                    had done everything right and she knew she would be rewarded for doing so with the promotion. So
-                    when the promotion was given to her main rival, it not only stung, it threw her belief system into
-                    disarray. It was her first big lesson in life, but not the last.--}}
+                <div style="font-family: 'papyrus'; font-size: 1.5vw;">
+
 
                     <div id="questDetail">
 
@@ -49,7 +43,7 @@
 
                 <div class="container">
                     <img src="{{asset('../img/post-button.png')}}" class="btn-post" id="btn-post"  onclick="postQuest()">
-
+                    <h2 id="available" style="font-family: 'papyrus'; font-size: 1.5vw;"></h2>
                 </div>
             </div>
 
@@ -76,12 +70,14 @@
                         id: id
                     },
                     success: function (data) {
-                        exp = data["exp"];
-                        days_required = data["days_required"];
-                        id_subject = data["id_subject"];
-                        document.getElementById('questDetail').innerHTML = data["desc"];
+                        exp = data.details["exp"];
+                        days_required = data.details["days_required"];
+                        id_subject = data.details["id_subject"];
+                        document.getElementById('questDetail').innerHTML = data.details["desc"];
+                        document.getElementById('available').innerHTML = "Available: "+data.available;
+
                         document.getElementById('btn-post').style.display = "block";
-                        document.getElementById('post-text').style.display = "block";
+                        //document.getElementById('post-text').style.display = "block";
                         //alert('success').html(data);
                     },
                     error: function (response) {

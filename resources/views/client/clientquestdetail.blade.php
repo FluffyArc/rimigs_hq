@@ -16,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 questTakenContent">
-                    <h2 style="font-size: 1.2vw; font-family: 'rageitalic'">{{$quests->desc}}</h2>
+                    <h2 style="font-size: 1.2vw; font-family: 'papyrus'">{{$quests->desc}}</h2>
                 </div>
             </div>
 
@@ -87,8 +87,7 @@
             }
 
             window.addEventListener("load", function () {
-                if ({{$posts->ongoing}} == 1
-            )
+                if ({{$posts->ongoing}} == 1)
                 {
                     document.getElementById('abort-button').style.display = "inline";
                 }

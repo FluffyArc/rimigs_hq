@@ -45,13 +45,13 @@
                                             <img src="{{asset('../img/quest-clear.png')}}">
                                         </td>
                                     @elseif($quest->ongoing == 1)
-                                        <td>Ongoing</td>
+                                        <td align="center" width="15%">Ongoing</td>
                                     @elseif($quest->ongoing == 2)
-                                        <td>
+                                        <td align="center" width="15%">
                                             <img src="{{asset('../img/quest-abort.png')}}">
                                         </td>
                                     @elseif($quest->ongoing == 3)
-                                        <td>
+                                        <td align="center" width="15%">
                                             <img src="{{asset('../img/quest-failed.png')}}">
                                         </td>
                                     @endif

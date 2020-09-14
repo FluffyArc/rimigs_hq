@@ -53,10 +53,7 @@
                 @endforeach
             </select>
         </div>
-        @if(Auth::user()->user_type == 'teacher')
-            <button type="submit" class="btn btn-primary">Add Quest</button>
-        @elseif(Auth::user()->user_type == 'assistant')
-            <button type="submit" class="btn btn-primary" disabled>Add Quest</button>
-        @endif
+        <button type="submit" class="btn btn-primary">Add Quest</button>
+
     </form>
 @endsection

@@ -44,8 +44,8 @@
                        value="{{$date}}">
             </div>
             <div class="form-group col-md-6">
-                <label>Completed Date</label>
-                <input type="date" class="form-control" id="level" name="completeDate" placeholder="Level">
+                <label>Available Player</label>
+                <input type="text" class="form-control" id="available" name="available" value="{{$available}}" readonly>
             </div>
         </div>
         <div class="form-group">

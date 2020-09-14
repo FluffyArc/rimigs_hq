@@ -26,6 +26,7 @@
                 <th>Exp</th>
                 <th>Level</th>
                 <th>Max Player</th>
+
                 <th>Days Required</th>
                 <th>Subject</th>
                 <th>Action</th>

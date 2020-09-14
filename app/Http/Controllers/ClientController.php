@@ -56,7 +56,19 @@ class ClientController extends Controller
     public function questDetail(Request $request){
         $details = Quest::findOrFail($request->id);
 
-        return response()->json($details);
+        $posts = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_quest','=',$request->id)
+            ->where('ongoing','=','1')
+            ->get();
+
+        $available = $details->max_player - $posts->count();
+
+        return response()->json(array(
+            'details' => $details,
+            'available' => $available
+        ));
+        //return response()->json($details);
     }
 
     public function questLevel($subject){
@@ -150,6 +162,7 @@ class ClientController extends Controller
             ->select('posts.*')
             ->where('id_user','=',Auth::user()->id)
             ->where('id_quest','=',$idQuest)
+            ->orderByDesc('id')
             ->first();
 
         return view('client.clientquestdetail', compact(['quests','posts']));
@@ -160,6 +173,7 @@ class ClientController extends Controller
             ->select('posts.*')
             ->where('id_user','=',Auth::user()->id)
             ->where('id_quest','=',$request->idQuest)
+            ->orderByDesc('id')
             ->first();
 
 

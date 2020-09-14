@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label for="username" class="label"><h4>Username</h4></label>
                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username"
-                           value="{{ old('username') }}" required autocomplete="username" autofocus>
+                           value="{{ old('username') }}" required autocomplete="username" placeholder="Username" autofocus>
 
                     @error('username')
                     <span class="invalid-feedback" role="alert">

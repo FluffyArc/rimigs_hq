@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <img src="{{asset('../img/change-pass-header.png')}}" class="profile-header">
             </div>
-            <div class="col-md-12 custom-scro llbar-css">
+            <div class="col-md-12 custom-scrollbar-css">
                 <form class="change-form">
                     @csrf
                     <div class="form-group change-input">

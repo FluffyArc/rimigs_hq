@@ -38,12 +38,20 @@ class PostController extends Controller
         $quest = Quest::findOrFail($id);
         $subject = Subject::findOrFail($subject);
 
+        $posts = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_quest','=',$id)
+            ->where('ongoing','=','1')
+            ->get();
+
+        $available = $quest->max_player - $posts->count();
+
         //$days = DB::select(DB::raw("Select days_required from quests where id = '$id'"))->first();
         $days = Quest::where('id',$id)->first();
 
         $date = Carbon::now()->addDay($days->days_required)->format('d-m-Y');
 
-        return view('posts.postform', compact(['students', 'quest', 'date', 'subject']));
+        return view('posts.postform', compact(['students', 'quest', 'date', 'subject', 'available']));
     }
 
     public function postQuest(Request $request)
@@ -75,6 +83,7 @@ class PostController extends Controller
         $checkQuestMax = DB::table('posts')
             ->select('posts.*')
             ->where('id_quest','=',$questid->id)
+            ->where('ongoing','=','1')
             ->get();
 
         $check = DB::table('posts')
