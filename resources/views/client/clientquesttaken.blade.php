@@ -37,8 +37,19 @@
                                             {{$quest->title}}
                                         </a>
                                     </td>
-                                    <td>{{date('d-m-Y', strtotime($quest->exp_date))}}</td>
-                                    <td>{{$quest->complete_date}}</td>
+                                    <td align="center">{{\Carbon\Carbon::parse($quest->exp_date)->format('d-M-Y')}}</td>
+
+                                    @if($quest->complete_date == null)
+                                        <td align="center">
+                                            -
+                                        </td>
+                                    @else
+                                        <td align="center">
+                                            {{\Carbon\Carbon::parse($quest->complete_date)->format('d-M-Y')}}
+                                        </td>
+
+                                    @endif
+
 
                                     @if($quest->ongoing == 0)
                                         <td align="center" width="15%">

@@ -36,8 +36,17 @@
                         <td>{{$post->name}}</td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->subject_name}}</td>
-                        <td>{{date('d-M-Y'), strtotime($post->exp_date)}}</td>
-                        <td>{{$post->complete_date}}</td>
+                        <td align="center">{{\Carbon\Carbon::parse($post->exp_date)->format('d-M-Y')}}</td>
+                        @if($post->complete_date == null)
+                            <td align="center">
+                                -
+                            </td>
+                        @else
+                            <td align="center">
+                                {{\Carbon\Carbon::parse($post->complete_date)->format('d-M-Y')}}
+                            </td>
+
+                        @endif
                         @if($post->ongoing == 0)
                             <td align="center"><img src="{{asset('../img/complete-stamp.png')}}" width="100px"></td>
                         @elseif($post->ongoing == 1)

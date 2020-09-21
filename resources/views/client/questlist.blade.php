@@ -31,9 +31,9 @@
 
 
 
-            <div id="quest-detail">
+            <div id="quest-detail" class="custom-scrollbar-css">
                 <div style="font-family: 'baskvill'; font-size: 1.5vw;"><h1>Quest Detail</h1></div>
-                <div style="font-family: 'papyrus'; font-size: 1.5vw;">
+                <div style="font-family: 'papyrus'; font-size: 1.2vw;">
 
 
                     <div id="questDetail">
@@ -42,7 +42,9 @@
                 </div>
 
                 <div class="container">
+                    <h2 id="exp" style="font-family: 'papyrus'; font-size: 1.5vw;"></h2>
                     <img src="{{asset('../img/post-button.png')}}" class="btn-post" id="btn-post"  onclick="postQuest()">
+
                     <h2 id="available" style="font-family: 'papyrus'; font-size: 1.5vw;"></h2>
                 </div>
             </div>
@@ -74,6 +76,7 @@
                         days_required = data.details["days_required"];
                         id_subject = data.details["id_subject"];
                         document.getElementById('questDetail').innerHTML = data.details["desc"];
+                        document.getElementById('exp').innerHTML = "Exp: "+data.details["exp"];
                         document.getElementById('available').innerHTML = "Available: "+data.available;
 
                         document.getElementById('btn-post').style.display = "block";
