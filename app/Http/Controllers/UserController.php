@@ -63,6 +63,8 @@ class UserController extends Controller
             ->select('subjects.subject_name')
             ->join('subjects','posts.id_subject','subjects.id')
             ->where('posts.id_user','=',$user->id)
+            ->where('posts.ongoing','=','0')
+            ->orderBy('posts.id','asc')
             ->get();
 
         $subjects = $subject->unique();
@@ -75,7 +77,20 @@ class UserController extends Controller
 
         $subjects = $subject->unique();*/
 
+        $completedQuests = DB::table('posts')
+            ->select('posts.id_quest', 'posts.exp', 'quests.title', 'quests.exp as questExp')
+            ->join('quests','posts.id_quest','=','quests.id')
+            ->where('posts.id_user','=',$user->id)
+            ->where('posts.ongoing','=','0')
+            ->orderBy('posts.id','asc')
+            ->get();
 
-        return view('users.userdetail', compact(['user', 'exp', 'subjects']));
+
+        $completed = $completedQuests->unique();
+
+
+        return view('users.userdetail', compact(['user', 'exp', 'subjects', 'completed']));
     }
+
+
 }

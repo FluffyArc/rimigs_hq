@@ -20,6 +20,7 @@ class PostController extends Controller
             ->join('users','users.id','=','posts.id_user')
             ->join('quests','quests.id','=','posts.id_quest')
             ->join('subjects','subjects.id','=','posts.id_subject')
+            ->where('posts.ongoing','=','1')
             ->get();
 
 
@@ -144,7 +145,7 @@ class PostController extends Controller
 
         $user = DB::table('users')
             ->select('users.*')
-            ->where('name','=',$request->name)
+            ->where('id','=',$post->id_user)
             ->first();
         $users = User::findOrFail($user->id);
         $users->exp += $request->grade;

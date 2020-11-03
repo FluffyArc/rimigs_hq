@@ -253,7 +253,8 @@ body{
     position: absolute;
     top: 20%;
     max-height: 70%;
-
+    overflow: auto;
+    display: block;
 }
 
 

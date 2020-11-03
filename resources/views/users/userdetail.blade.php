@@ -47,7 +47,20 @@
                         </ol>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2">Completed Quests</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ol>
+                            @foreach($completed as $complete)
 
+                                <li>{{$complete->title}} (Exp: {{$complete->exp}}/{{$complete->questExp}})</li>
+
+                            @endforeach
+                        </ol>
+                    </td>
+                </tr>
 
             </table>
         </div>

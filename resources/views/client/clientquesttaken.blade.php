@@ -5,21 +5,21 @@
     <center>
         <div class="col-md-12" id="board">
             <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
-            <div class="container">
-                <div class="row">
+
+
                     <div class="col-md-12 questTakenTitle">
                         <h1>Quest</h1>
                     </div>
-                </div>
+
                 <br>
-                <div class="row">
+
                     <div class="col-md-12 questTakenContent">
                         Name: {{Auth::user()->name}}
                     </div>
-                </div>
-                <div class="row">
+
+
                     <div class="col-md-11">
-                        <table border="1" class="table-quest">
+                        <table border="1" class="table-quest custom-scrollbar-css">
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
@@ -70,8 +70,8 @@
                             @endforeach
                         </table>
                     </div>
-                </div>
-            </div>
+
+
 
 
         </div>
