@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropStatusColumnInPostsTable extends Migration
+class AddStatusToQuestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropStatusColumnInPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('quests', function (Blueprint $table) {
+            $table->string('status');
         });
     }
 
@@ -25,7 +25,7 @@ class DropStatusColumnInPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('quests', function (Blueprint $table) {
             //
         });
     }
