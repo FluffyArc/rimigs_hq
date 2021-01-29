@@ -20,8 +20,9 @@ class CreateQuestsTable extends Migration
             $table->integer('exp');
             $table->integer('level');
             $table->integer('max_player');
-            $table->integer('days_required');
+
             $table->unsignedBigInteger('id_subject');
+            $table->string('status');
           /*  $table->foreign('id_subject')
                 ->references('id')
                 ->on('subjects')

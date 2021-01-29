@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        //user form di menu Add Player
         return view('users.userform');
     }
 
@@ -19,10 +20,27 @@ class UserController extends Controller
         $users = DB::table('users')
             ->select('users.*')
             ->where('user_type','=','student')
-            ->orderByDesc('exp')
             ->get();
 
-        return view('users.user', compact(['users']));
+        $subjects = DB::table('subjects')
+            ->select('subject_name')
+            ->get();
+
+        return view('users.user', compact(['users', 'subjects']));
+    }
+
+    public function selectSubject(Request $request){
+        $subject = DB::table('grades')
+            ->select('users.name', 'grades.hr')
+            ->join('users','users.id','=','grades.id_user')
+            ->join('subjects','subjects.id','=','grades.id_subject')
+            ->where('subjects.subject_name','=',$request->subjectName)
+            ->get();
+
+        return response()->json(array(
+            'subjects' => $subject,
+
+        ));
     }
 
     public function students()

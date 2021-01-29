@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToQuestsTable extends Migration
+class CreateGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddStatusToQuestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('quests', function (Blueprint $table) {
-            $table->string('status');
+        Schema::create('grades', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_subject');
+            $table->integer('hr');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddStatusToQuestsTable extends Migration
      */
     public function down()
     {
-        Schema::table('quests', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('grades');
     }
 }

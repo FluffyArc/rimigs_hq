@@ -24,11 +24,6 @@ Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('admin/register','Auth\RegisterController@register');
 
-
-
-
-
-
 //Auth::routes();
 
 
@@ -65,6 +60,9 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::post('addStudent','UserController@addStudent')->name('addStudent');
 
     Route::post('grade','PostController@grade')->name('grade');
+    Route::post('selectSubject','UserController@selectSubject')->name('selectSubject');
+    Route::post('selectSubjectInPost','PostController@selectSubjectInPost')->name('selectSubjectInPost');
+
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
 });

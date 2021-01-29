@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignKeyForHistoriesTable extends Migration
+class CreateForeignKeyForGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateForeignKeyForHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('histories', function (Blueprint $table) {
+        Schema::table('grades', function (Blueprint $table) {
             $table->foreign('id_user')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->foreign('id_post')
-                ->references('id')
-                ->on('posts')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -41,6 +35,6 @@ class CreateForeignKeyForHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foreign_key_for_histories');
+        Schema::dropIfExists('foreign_key_for_grades');
     }
 }

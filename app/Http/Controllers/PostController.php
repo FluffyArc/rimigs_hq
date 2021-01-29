@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Grade;
 use App\Post;
 use App\Quest;
 use App\Subject;
@@ -16,16 +17,40 @@ class PostController extends Controller
     {
         //$posts = Post::all();
         $posts = DB::table('posts')
-            ->select('users.name', 'quests.title', 'subjects.subject_name', 'posts.id', 'posts.exp_date','posts.complete_date', 'posts.ongoing')
+            ->select('users.name', 'quests.title', 'subjects.subject_name', 'posts.id', 'posts.ongoing')
             ->join('users','users.id','=','posts.id_user')
             ->join('quests','quests.id','=','posts.id_quest')
             ->join('subjects','subjects.id','=','posts.id_subject')
             ->where('posts.ongoing','=','1')
             ->get();
 
+        $subjects = DB::table('subjects')
+            ->select('subject_name')
+            ->get();
 
+        return view('posts.post', compact(['posts', 'subjects']));
+    }
 
-        return view('posts.post', compact(['posts']));
+    public function selectSubjectInPost(Request $request){
+        $subject = DB::table('posts')
+            ->select('posts.id', 'users.name', 'quests.title', 'posts.ongoing', 'posts.id_user')
+            ->join('users','users.id','=','posts.id_user')
+            ->join('subjects','subjects.id','=','posts.id_subject')
+            ->join('quests','quests.id','=','posts.id_quest')
+            ->where('subjects.subject_name','=',$request->subjectName)
+            ->where('posts.ongoing','=','1')
+            ->get();
+
+        $hr = DB::table('grades.hr')
+            ->join('users','user.id','=','grades.id_user')
+            ->where('grades.id_user','=', $subject->id_user)
+            ->groupBy('id_user')
+            ->get();
+
+        return response()->json(array(
+            'subjects' => $subject,
+            'hr' => $hr,
+        ));
     }
 
     public function form()
@@ -121,7 +146,7 @@ class PostController extends Controller
     public function postgrade($id){
         $post = DB::table('posts')
             ->select('users.name', 'quests.title', 'quests.desc', 'quests.exp', 'subjects.subject_name',
-                'posts.id', 'posts.exp_date','posts.complete_date', 'posts.ongoing','subjects.subject_name')
+                'posts.id', 'posts.ongoing','subjects.subject_name')
             ->join('users','users.id','=','posts.id_user')
             ->join('quests','quests.id','=','posts.id_quest')
             ->join('subjects','subjects.id','=','posts.id_subject')
@@ -129,32 +154,38 @@ class PostController extends Controller
             ->first();
 
 
-        $date = Carbon::now()->format('d-M-Y');
-        return view('posts.postgrade', compact(['date','post']));
+
+        return view('posts.postgrade', compact(['post']));
     }
 
     public function grade(Request $request){
         $this->validate($request,[
             'grade' => 'required'
         ]);
+
         $post = Post::findOrFail($request->id);
-        $post->exp = $request->grade;
-        $post->complete_date = date('Y-m-d',strtotime($request->completeDate));
+        //$post->exp = $request->grade;
+        //$post->complete_date = date('Y-m-d',strtotime($request->completeDate));
         $post->ongoing = $request->status;
 
 
-        $user = DB::table('users')
+        /*$user = DB::table('users')
             ->select('users.*')
             ->where('id','=',$post->id_user)
             ->first();
-        $users = User::findOrFail($user->id);
-        $users->exp += $request->grade;
+        $users = User::findOrFail($user->id);*/
+        //$users->exp += $request->grade;
+
+        $grade = new Grade();
+        $grade->id_user = $post->id_user;
+        $grade->id_subject = $post->id_subject;
+        $grade->hr = $request->grade;
 
         if($request->grade > $request->maxgrade){
             return response()->json(['failed'=>'Sorry, your grade is to high for this quest']);
         }else{
             $post->save();
-            $users->save();
+            $grade->save();
             return response()->json(['success'=>'Post graded successfully']);
         }
 

@@ -20,18 +20,7 @@
                 <label>Quest Description</label>
                 <textarea class="form-control" id="questDesc" name="questDesc" readonly>{{$post->desc}}</textarea>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Expired Date</label>
-                    <input type="text" class="form-control" id="expDate" name="expDate"
-                           value="{{date('d-M-Y', strtotime($post->exp_date)) }}" readonly>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Complete Date</label>
-                    <input type="text" class="form-control" id="completeDate" name="completeDate"
-                           value="{{$date}}" readonly>
-                </div>
-            </div>
+
             <div class="form-group">
                 <label>Subject</label>
                 <input type="text" class="form-control" id="subject" name="subject"
@@ -83,7 +72,6 @@
         function postgrade(idpost) {
             var studentName = document.getElementById('studentName').value;
             var grade = document.getElementById('grade').value;
-            var completeDate = document.getElementById('completeDate').value;
             var maxgrade = document.getElementById('maxgrade').value;
             var status = document.getElementsByName('status');
             var stat;
@@ -111,7 +99,6 @@
                             data: {
                                 id: idpost,
                                 name: studentName,
-                                completeDate: completeDate,
                                 maxgrade: maxgrade,
                                 status: stat,
                                 grade: grade

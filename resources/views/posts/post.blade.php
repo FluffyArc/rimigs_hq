@@ -16,15 +16,36 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+        <div class="dropdown">
+            <select class="btn btn-secondary dropdown-toggle" onchange="selectSubject()" id="subjects">
+                <option value="" disabled selected>-Select Subjects-</option> <br>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    @foreach($subjects as $subject)
+                        <option value="{{$subject->subject_name}}">{{$subject->subject_name}}</option>
+                    @endforeach
+
+                </div>
+            </select>
+
+        </div>
+
+        <br>
+
+        <input class="form-control" id="myInput" type="text" placeholder="Search.."> <br>
+        <div class="table-responsive" id="table">
+
+        </div>
+
+        <div class="table-responsive" id="table">
+            {{--<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead align="center">
                 <th>No</th>
                 <th>Student Name</th>
                 <th>Quest Title</th>
                 <th>Subject</th>
-                <th>Exp Date</th>
-                <th>Complete Date</th>
                 <th>Ongoing</th>
                 <th>Action</th>
                 <?php $no = 1; ?>
@@ -36,17 +57,8 @@
                         <td>{{$post->name}}</td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->subject_name}}</td>
-                        <td align="center">{{\Carbon\Carbon::parse($post->exp_date)->format('d-M-Y')}}</td>
-                        @if($post->complete_date == null)
-                            <td align="center">
-                                -
-                            </td>
-                        @else
-                            <td align="center">
-                                {{\Carbon\Carbon::parse($post->complete_date)->format('d-M-Y')}}
-                            </td>
 
-                        @endif
+
                         @if($post->ongoing == 0)
                             <td align="center"><img src="{{asset('../img/complete-stamp.png')}}" width="100px"></td>
                         @elseif($post->ongoing == 1)
@@ -68,7 +80,65 @@
                     </tr>
                 @endforeach
                 </tbody>
-            </table>
+            </table>--}}
         </div>
     </div>
 @endsection
+
+<script type="text/javascript">
+    function selectSubject(subject) {
+        var subject = document.getElementById("subjects").value;
+        var no = 1;
+        var txt = "";
+        var postid;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: '{{url('selectSubjectInPost')}}',
+            type: 'POST',
+            data: {
+                subjectName: subject,
+            },
+            success: function (data) {
+                //JSON.parse(data);
+                /*<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">*/
+                txt += "<table class='table table-bordered id='dataTable' width='100%' cellspacing='0'>"
+                txt += "<th> No </th> <th>Nama</th> <th>Quest</th> <th>Action</th>"
+                txt += "<tbody id='myTable'>"
+                for(i in data.subjects){
+                    txt+="<tr><td>"+no++ +"</td>"+"<td>"+data.subjects[i].name+"</td>"+"<td>"+data.subjects[i].title+"</td>" +
+                        "<td><a href='postgrade/"+data.subjects[i].id+"'><button class=\"btn btn-primary\">Grade</button></a></td></tr>"
+                }
+                txt+='</tbody>'
+                txt+="</table>"
+                document.getElementById("table").innerHTML = txt;
+                console.log(data)
+                //alert('success').html(data);
+
+                //Searching bar
+                $(document).ready(function(){
+                    $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            },
+            error: function (response) {
+                //console.log(subject)
+                console.log(response)
+                //console.log(data)
+                //document.getElementById("response").innerHTML = data.subjectName
+            }
+
+
+        });
+    }
+
+
+</script>
