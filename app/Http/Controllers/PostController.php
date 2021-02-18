@@ -33,7 +33,7 @@ class PostController extends Controller
 
     public function selectSubjectInPost(Request $request){
         $subject = DB::table('posts')
-            ->select('posts.id', 'users.name', 'quests.title', 'posts.ongoing', 'posts.id_user')
+            ->select('posts.id', 'users.name', 'quests.title', 'posts.ongoing','posts.id_user')
             ->join('users','users.id','=','posts.id_user')
             ->join('subjects','subjects.id','=','posts.id_subject')
             ->join('quests','quests.id','=','posts.id_quest')
@@ -41,15 +41,11 @@ class PostController extends Controller
             ->where('posts.ongoing','=','1')
             ->get();
 
-        $hr = DB::table('grades.hr')
-            ->join('users','user.id','=','grades.id_user')
-            ->where('grades.id_user','=', $subject->id_user)
-            ->groupBy('id_user')
-            ->get();
+
 
         return response()->json(array(
             'subjects' => $subject,
-            'hr' => $hr,
+
         ));
     }
 
@@ -180,6 +176,7 @@ class PostController extends Controller
         $grade->id_user = $post->id_user;
         $grade->id_subject = $post->id_subject;
         $grade->hr = $request->grade;
+        $grade->id_post = $post->id;
 
         if($request->grade > $request->maxgrade){
             return response()->json(['failed'=>'Sorry, your grade is to high for this quest']);

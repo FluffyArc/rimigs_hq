@@ -27,7 +27,7 @@
                 <th>Level</th>
                 <th>Max Player</th>
 
-                <th>Days Required</th>
+
                 <th>Subject</th>
                 <th>Action</th>
                 <th>Update</th>
@@ -38,13 +38,13 @@
                 @foreach($quests as $quest)
                     <tr>
                         <td align="center">{{$no++}}</td>
+                        {{--<td>{{$quest->id}}</td>--}}
                         <td>{{$quest->title}}</td>
                         <td>{{$quest->desc}}</td>
                         <td align="center">{{$quest->exp}}</td>
                         <td align="center">{{$quest->level}}</td>
                         <td align="center">{{$quest->max_player}}</td>
-                        <td align="center">{{$quest->days_required}}</td>
-                        <td>{{$quest->subject->subject_name}}</td>
+                        <td>{{$quest->subject_name}}</td>
                         <td align="center">
                             @if(Auth::user()->user_type == 'teacher')
                                 <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}/{{$quest->id_subject}}"
@@ -57,7 +57,7 @@
                             <a class="btn btn-primary" href="/editQuest/{{$quest->id}}" role="button">UPDATE</a>
                         </td>
                         <td align="center">
-                            <a class="btn btn-danger" href="destroyQuest/{{$quest->id}}" role="button">DELETE</a>
+                            <a class="btn btn-danger" href="/destroyQuest/{{$quest->id}}" role="button">DELETE</a>
                         </td>
                     </tr>
                 @endforeach

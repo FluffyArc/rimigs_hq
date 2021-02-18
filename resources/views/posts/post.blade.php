@@ -19,7 +19,8 @@
 
         <div class="dropdown">
             <select class="btn btn-secondary dropdown-toggle" onchange="selectSubject()" id="subjects">
-                <option value="" disabled selected>-Select Subjects-</option> <br>
+                <option value="" disabled selected>-Select Subjects-</option>
+                <br>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
@@ -39,7 +40,7 @@
 
         </div>
 
-        <div class="table-responsive" id="table">
+        <div class="table-responsive" id="table" style="text-decoration: none">
             {{--<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead align="center">
                 <th>No</th>
@@ -109,21 +110,22 @@
                 txt += "<table class='table table-bordered id='dataTable' width='100%' cellspacing='0'>"
                 txt += "<th> No </th> <th>Nama</th> <th>Quest</th> <th>Action</th>"
                 txt += "<tbody id='myTable'>"
-                for(i in data.subjects){
-                    txt+="<tr><td>"+no++ +"</td>"+"<td>"+data.subjects[i].name+"</td>"+"<td>"+data.subjects[i].title+"</td>" +
-                        "<td><a href='postgrade/"+data.subjects[i].id+"'><button class=\"btn btn-primary\">Grade</button></a></td></tr>"
+                for (i in data.subjects) {
+                    txt += "<tr><td>" + no++ + "</td>" + "<td><a href='detailuser/" + data.subjects[i].id_user + "' style='color: black; text-decoration: none'>" +
+                        data.subjects[i].name + "</a></td>" + "<td>" + data.subjects[i].title + "</td>" +
+                        "<td><a href='postgrade/" + data.subjects[i].id + "'><button class=\"btn btn-primary\">Grade</button></a></td></tr>"
                 }
-                txt+='</tbody>'
-                txt+="</table>"
+                txt += '</tbody>'
+                txt += "</table>"
                 document.getElementById("table").innerHTML = txt;
                 console.log(data)
                 //alert('success').html(data);
 
                 //Searching bar
-                $(document).ready(function(){
-                    $("#myInput").on("keyup", function() {
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
                         var value = $(this).val().toLowerCase();
-                        $("#myTable tr").filter(function() {
+                        $("#myTable tr").filter(function () {
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });

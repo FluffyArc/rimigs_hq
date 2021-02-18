@@ -16,7 +16,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 questTakenContent">
-                    <h2 style="font-size: 1.2vw; font-family: 'papyrus'">{{$quests->desc}}</h2>
+                    <h2>{{$quests->desc}}</h2>
+                    <h2 style="margin-left: 50%;">Exp: {{$quests->exp}}</h2>
                 </div>
             </div>
 

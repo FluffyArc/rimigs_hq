@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -16,25 +17,49 @@ class UserController extends Controller
         return view('users.userform');
     }
 
-    public function user(){
-        $users = DB::table('users')
-            ->select('users.*')
-            ->where('user_type','=','student')
-            ->get();
+    public function user(Request $request){
 
-        $subjects = DB::table('subjects')
-            ->select('subject_name')
-            ->get();
 
-        return view('users.user', compact(['users', 'subjects']));
+        $nomor = 1;
+        if($request->ajax()){
+            $users = DB::table('users')
+                ->select('users.*')
+                ->where('user_type','=','student')
+                ->orderBy('name','asc')
+                ->get();
+
+            return DataTables::of($users)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+
+                    $btn = '<a href="detailuser/'.$row->id.'" class="edit btn btn-primary btn-sm">View</a>';
+                    $del ='<a href="destroyUser/'.$row->id.'" class="edit btn btn-danger btn-sm">Delete</a>';
+                    return $btn." ".$del;
+                })
+                ->rawColumns(['action'])
+
+                ->make(true);
+        }
+        return view('users.user');
+
     }
 
+
     public function selectSubject(Request $request){
-        $subject = DB::table('grades')
-            ->select('users.name', 'grades.hr')
+        /*$subject = DB::table('grades')
+            ->select('users.name')
             ->join('users','users.id','=','grades.id_user')
             ->join('subjects','subjects.id','=','grades.id_subject')
             ->where('subjects.subject_name','=',$request->subjectName)
+            ->groupBy('users.name')
+            ->get();*/
+
+        $subject = DB::table('grades')
+            ->selectRaw('users.name, sum(grades.hr) as hr')
+            ->join('users','users.id','=','grades.id_user')
+            ->join('subjects','subjects.id','=','grades.id_subject')
+            ->where('subjects.subject_name','=',$request->subjectName)
+            ->groupBy('users.name')
             ->get();
 
         return response()->json(array(
@@ -53,6 +78,7 @@ class UserController extends Controller
         $users = new User();
         $users->name = \request('studentName');
         $users->email = \request('studentEmail');
+        $users->username = \request('username');
         $users->user_type = "student";
         $users->password = Hash::make(\request('password'));
 
@@ -68,18 +94,17 @@ class UserController extends Controller
     public function detailuser($user){
         $user = DB::table('users')
             ->select('users.*')
-            ->where('name','=',$user)
+            ->where('id','=',$user)
             ->first();
 
-        $exp = DB::table('posts')
-            ->select('posts.exp')
+        $exp = DB::table('grades')
+            ->select('grades.hr')
             ->where('id_user','=',$user->id)
-            ->where('ongoing','=','0')
-            ->sum('exp');
+            ->sum('hr');
 
         $subject = DB::table('posts')
             ->select('subjects.subject_name')
-            ->join('subjects','posts.id_subject','subjects.id')
+            ->join('subjects','posts.id_subject','=', 'subjects.id')
             ->where('posts.id_user','=',$user->id)
             ->where('posts.ongoing','=','0')
             ->orderBy('posts.id','asc')
@@ -96,8 +121,9 @@ class UserController extends Controller
         $subjects = $subject->unique();*/
 
         $completedQuests = DB::table('posts')
-            ->select('posts.id_quest', 'posts.exp', 'quests.title', 'quests.exp as questExp')
+            ->select('posts.id_quest', 'grades.hr', 'quests.title', 'quests.exp as questExp')
             ->join('quests','posts.id_quest','=','quests.id')
+            ->join('grades','posts.id','=','grades.id_post')
             ->where('posts.id_user','=',$user->id)
             ->where('posts.ongoing','=','0')
             ->orderBy('posts.id','asc')
@@ -110,5 +136,16 @@ class UserController extends Controller
         return view('users.userdetail', compact(['user', 'exp', 'subjects', 'completed']));
     }
 
+    public function destroyUser($id){
+
+        $users = User::findOrFail($id);
+        $users->delete();
+
+        return redirect('users')->with('success','User Deleted Successfully');
+        /*$quests = Quest::findOrFail($id);
+        $subjectName = Subject::findOrFail($quests->id_subject);
+        $quests->delete();
+        return redirect()->route('showQuest',$subjectName->subject_name)->with('success','Quest Deleted Successfully');*/
+    }
 
 }

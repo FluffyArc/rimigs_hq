@@ -41,7 +41,7 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
 
     Route::get('adminSubjects', 'SubjectController@index')->name('adminSubjects');
     Route::get('subjectForm','SubjectController@form')->name('subjectForm');
-    Route::get('showQuest', 'QuestController@showQuest')->name('showQuest');
+    Route::get('showQuest/{subject}', 'QuestController@showQuest')->name('showQuest');
 
     Route::get('showQuestById/{id}/{subject}', 'PostController@studentsAndQuestsById');
     Route::get('editQuest/{id}', 'QuestController@editQuest')->name('editQuest');
@@ -53,6 +53,11 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::get('users', 'UserController@user')->name('users');
     Route::get('detailuser/{user}','UserController@detailuser')->name('detailuser');
 
+    Route::get('subjectList','SubjectController@subjectList')->name('subjectList');
+    Route::get('achievement','AchievementController@index')->name('achievement');
+    Route::get('addAchievement','AchievementController@form')->name('form');
+    Route::get('achEdit/{id}','AchievementController@achEdit')->name('achEdit');
+
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
     Route::post('postQuest','PostController@postQuest')->name('postQuest');
@@ -62,9 +67,12 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::post('grade','PostController@grade')->name('grade');
     Route::post('selectSubject','UserController@selectSubject')->name('selectSubject');
     Route::post('selectSubjectInPost','PostController@selectSubjectInPost')->name('selectSubjectInPost');
-
+    Route::post('addAch','AchievementController@addAch')->name('addAch');
+    Route::post('updateAch/{id}','AchievementController@update')->name('updateAch');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
+    Route::get('destroyUser/{id}','UserController@destroyUser')->name('destroyUser');
+    Route::get('destroyAch/{id}','AchievementController@destroy')->name('destroyAch');
 });
 
 Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
@@ -77,11 +85,14 @@ Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
     Route::get('profile','ClientController@profile')->name('profile')->middleware('student');
     Route::get('subjects','ClientController@subjects')->name('subjects')->middleware('student');
     Route::get('changepass','ClientController@changepass')->name('changepass')->middleware('student');
+    Route::get('changeprofile/{id}','ClientController@changeProfile')->name('changeProfile')->middleware('student');
+
 
     Route::post('changepass','ClientController@updatepass')->name('changepass')->middleware('student');
     Route::post('abort','ClientController@abortQuest')->middleware('student');
     Route::post('questDetail', 'ClientController@questDetail')->name('questDetail')->middleware('student');
     Route::post('questPost','ClientController@questPost')->middleware('student');
+    Route::post('updateProfile', 'ClientController@updateProfile')->name('updateProfile')->middleware('student');
 
 
 });

@@ -23,33 +23,17 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Expired Date</th>
-                                <th>Completed Date</th>
                                 <th>Status</th>
+                                <th>Action</th>
                                 <?php $no = 0; ?>
                             </tr>
                             @foreach($quests as $quest)
                                 <tr>
                                     <td align="center">{{++$no}}</td>
                                     <td>
-                                        <a href="{{route('detail',$quest->id_quest)}}"
-                                           style="text-decoration: none; color: black">
                                             {{$quest->title}}
-                                        </a>
+
                                     </td>
-                                    <td align="center">{{\Carbon\Carbon::parse($quest->exp_date)->format('d-M-Y')}}</td>
-
-                                    @if($quest->complete_date == null)
-                                        <td align="center">
-                                            -
-                                        </td>
-                                    @else
-                                        <td align="center">
-                                            {{\Carbon\Carbon::parse($quest->complete_date)->format('d-M-Y')}}
-                                        </td>
-
-                                    @endif
-
 
                                     @if($quest->ongoing == 0)
                                         <td align="center" width="15%">
@@ -66,6 +50,12 @@
                                             <img src="{{asset('../img/quest-failed.png')}}">
                                         </td>
                                     @endif
+                                    <td width="25%" align="center">
+                                        <a href="{{route('detail',$quest->id_quest)}}"
+                                           style="text-decoration: none; color: black">
+                                            <img src="{{asset('../img/detail-button.png')}}">
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

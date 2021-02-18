@@ -3,11 +3,12 @@
 @section('content')
     <center>
         <div class="col-md-12" id="board">
-            <img src="{{ asset('img/questpage-2.png') }}" class="questPageImage-2">
+            <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
             <div class="col-md-12">
-                <img src="../img/user-profile.png" class="profile-header">
+                <img src="{{asset('img/user-profile.png')}}" class="profile-header">
             </div>
             <div class="col-md-12">
+                <img src="../upload/avatar/{{Auth::user()->avatar}}" class="avatar">
                 <table border="0" class="profile-table">
                     <tr>
                         <td>Name</td>
@@ -36,23 +37,31 @@
                         @endif
 
                     </tr>
-                    <tr>
+                    {{--<tr>
                         <td colspan="2">Subjects</td>
                     </tr>
                     @foreach($subjects as $subject)
                         <tr>
                             <td colspan="2">{{$subject->subject_name}}</td>
                         </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="2">
-                            <a href="{{route('changepass')}}">
-                                <img src="{{asset('../img/change-pass-button.png')}}" class="change-pass-button">
-                            </a>
-                        </td>
-                    </tr>
+                    @endforeach--}}
+
+                </table>
+
+
+            </div>
+
+            <div class="col-md-12">
+                <img src="{{asset('img/achievements.png')}}" class="achievements-header">
+
+                <table border="0" class="ach-table">
+                 
                 </table>
             </div>
+
+            <a href="{{route('changeProfile',Auth::user()->id)}}">
+                <img src="{{asset('../img/change-profile.png')}}" class="change-pass-button">
+            </a>
         </div>
     </center>
 @endsection

@@ -2,88 +2,67 @@
 @extends('layouts.sidenav')
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <div class="card-body">
         <h1>Students List</h1>
         <div class="dropdown">
-            <select class="btn btn-secondary dropdown-toggle" onchange="selectSubject()" id="subjects">
-                <option value="" disabled selected>-Select Subjects-</option> <br>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                    @foreach($subjects as $subject)
-                        <option value="{{$subject->subject_name}}">{{$subject->subject_name}}</option>
-                    @endforeach
-
-                </div>
-            </select>
 
         </div>
 
         <br>
-        <input class="form-control" id="myInput" type="text" placeholder="Search.."> <br>
+
         <div class="table-responsive" id="table">
+            <table class="table table-bordered data-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
 
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        $(function () {
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('users') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'name', name: 'name'},
+                    {data: 'username', name: 'username'},
+                    {data: 'email', name: 'email'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+        });
+    </script>
 @endsection
 
 
-<script type="text/javascript">
-    function selectSubject(subject) {
-        var subject = document.getElementById("subjects").value;
-        var no = 1;
-        var txt = "";
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            url: '{{url('selectSubject')}}',
-            type: 'POST',
-            data: {
-                subjectName: subject
-            },
-            success: function (data) {
-                //JSON.parse(data);
-                /*<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">*/
-                txt += "<table class='table table-bordered id='dataTable' width='100%' cellspacing='0'>"
-                txt += "<th> No </th> <th>Nama</th> <th>Hunter Rank</th>"
-                txt += "<tbody id='myTable'>"
-                for(i in data.subjects){
-                    txt+="<tr><td>"+no++ +"</td>"+"<td>"+data.subjects[i].name+"</td>"+"<td>"+data.subjects[i].hr+"</td></tr>"
-                }
-                txt+='</tbody>'
-                txt+="</table>"
-                document.getElementById("table").innerHTML = txt;
-                console.log(data)
-                //alert('success').html(data);
-
-                //Searching bar
-                $(document).ready(function(){
-                    $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                    });
-                });
-            },
-            error: function (response) {
-                //console.log(subject)
-                console.log(response)
-                //console.log(data)
-                //document.getElementById("response").innerHTML = data.subjectName
-            }
 
 
-        });
-    }
 
-
-</script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

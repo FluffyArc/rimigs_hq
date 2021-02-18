@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Quest;
 use App\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestController extends Controller
 {
@@ -20,23 +21,32 @@ class QuestController extends Controller
         $quest->exp = request('exp');
         $quest->level = request('level');
         $quest->max_player = request('maxPlayer');
-        $quest->days_required = request('daysRequired');
         $quest->id_subject = request('subject');
+        $quest->status = "Active";
 
         $quest->save();
 
-        return redirect('showQuest')->with('success','Quest Added Successfully');
+        $subjects = Subject::findOrFail($quest->id_subject);
+
+        return redirect()->route('showQuest',$subjects->subject_name)->with('success','Quest Added Successfully');
     }
 
-    public function showQuest(){
-        $quests = Quest::all();
+    public function showQuest($subject){
+        //$quests = Quest::orderBy('level','asc')->findOrFail($subjectId)->get();
+        $quests = DB::table('quests')
+            ->select('quests.*','subjects.subject_name')
+            ->join('subjects','subjects.id','=','quests.id_subject')
+            ->where('subjects.subject_name','=',$subject)
+            ->orderBy('quests.level','asc')
+            ->get();
         return view('quests.showquest', compact('quests'));
     }
 
     public function editQuest($id){
         $quests = Quest::findOrFail($id);
         $subjects = Subject::all();
-        return view('quests.editquest', compact(['quests', 'subjects']));
+        $selectedSubject = Subject::findOrFail($quests->id_subject);
+        return view('quests.editquest', compact(['quests', 'subjects','selectedSubject']));
     }
 
     public function updateQuest(Request $request, $id){
@@ -46,7 +56,6 @@ class QuestController extends Controller
             'exp' => 'required',
             'level' => 'required',
             'maxPlayer' => 'required',
-            'daysRequired' => 'required',
             'subject' => 'required'
         ]);
 
@@ -56,17 +65,19 @@ class QuestController extends Controller
         $quests->exp = $request->exp;
         $quests->level = $request->level;
         $quests->max_player = $request->maxPlayer;
-        $quests->days_required = $request->daysRequired;
         $quests->id_subject = $request->subject;
 
+        $subjectName = Subject::findOrFail($quests->id_subject);
+
         $quests->save();
-        return redirect('showQuest')->with('success','Quest Updated Successfully');
+        return redirect()->route('showQuest',$subjectName->subject_name)->with('success','Quest Updated Successfully');
     }
 
     public function destroyQuest($id){
         $quests = Quest::findOrFail($id);
+        $subjectName = Subject::findOrFail($quests->id_subject);
         $quests->delete();
-        return redirect('showQuest')->with('success','Quest Deleted Successfully');
+        return redirect()->route('showQuest',$subjectName->subject_name)->with('success','Quest Deleted Successfully');
     }
 
 }

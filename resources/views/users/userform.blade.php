@@ -17,7 +17,8 @@
                     <strong>{{ $message }}</strong>
                 </div>
             @endif
-
+        </div>
+        <div class="form-group">
             <h1>Add New User</h1>
             <label>Student Name</label>
             <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Name">
@@ -25,6 +26,10 @@
         <div class="form-group">
             <label>Student Email</label>
             <input type="text" class="form-control" id="studentEmail" name="studentEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
         </div>
         <div class="form-group">
             <label>Password</label>

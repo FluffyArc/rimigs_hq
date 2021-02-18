@@ -35,4 +35,10 @@ class SubjectController extends Controller
         $subjects = Subject::all();
         return view('quests.questform', compact('subjects'));
     }
+
+    public function subjectList(){
+        $subjects = Subject::all();
+
+        return view('subjects.subjectList', compact('subjects'));
+    }
 }

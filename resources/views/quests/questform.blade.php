@@ -39,11 +39,6 @@
                 <label>Max Player</label>
                 <input type="number" class="form-control" id="maxPlayer" name="maxPlayer" placeholder="Max Player">
             </div>
-            <div class="form-group col-md-3">
-                <label>Days Required</label>
-                <input type="number" class="form-control" id="daysRequired" name="daysRequired"
-                       placeholder="Max Player">
-            </div>
         </div>
         <div class="form-group">
             <label>Subject</label>

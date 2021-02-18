@@ -55,7 +55,7 @@
                         <ol>
                             @foreach($completed as $complete)
 
-                                <li>{{$complete->title}} (Exp: {{$complete->exp}}/{{$complete->questExp}})</li>
+                                <li>{{$complete->title}} (Exp: {{$complete->hr}}/{{$complete->questExp}})</li>
 
                             @endforeach
                         </ol>

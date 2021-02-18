@@ -72,11 +72,11 @@
                         id: id
                     },
                     success: function (data) {
-                        exp = data.details["exp"];
+                        //exp = data.details["exp"];
                         days_required = data.details["days_required"];
                         id_subject = data.details["id_subject"];
                         document.getElementById('questDetail').innerHTML = data.details["desc"];
-                        document.getElementById('exp').innerHTML = "Exp: "+data.details["exp"];
+                        //document.getElementById('exp').innerHTML = "Exp: "+data.details["exp"];
                         document.getElementById('available').innerHTML = "Available: "+data.available;
 
                         document.getElementById('btn-post').style.display = "block";

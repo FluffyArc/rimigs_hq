@@ -82,13 +82,40 @@ body{
 .profile-header{
     position: absolute;
     top: 5%;
-    margin-left: -18%;
+    float: left;
     width: 35%;
+    margin-left: -42%;
+}
+
+.achievements-header{
+    position: absolute;
+    top: 5%;
+    float: left;
+    width: 35%;
+    margin-left: 10%;
+}
+
+.avatar{
+    position: absolute;
+    width: 12%;
+    left: 1%;
+    top: 18%;
+    border-radius: 50%;
+
 }
 
 .profile-table{
     position: absolute;
-    top: 20%;
+    top: 18%;
+    margin-left: 15%;
+    width: 30%;
+    font-family: 'papyrus';
+    font-size: 1.1vw;
+}
+
+.ach-table{
+    position: absolute;
+    top: 15vw;
     margin-left: 30%;
     width: 40%;
     font-family: 'papyrus';
@@ -198,6 +225,49 @@ body{
     border-radius: 25px;
 }
 
+.edit-profile-form{
+    padding: 10%;
+    padding-top: 30px;
+    margin-top: 100px;
+    z-index: 1;
+    width: 60%;
+    min-height: 550px;
+    background-color: #772f1a;
+    background-image: linear-gradient(315deg, #772f1a 0%, #f2a65a 74%);
+
+
+    position: relative;
+    color: #fff;
+    border-radius: 25px;
+
+
+
+}
+
+.edit-profile-form form{
+    position: absolute;
+    top: 23%;
+    font-size: 1vw;
+    margin-left: 15%;
+    width: 50%;
+}
+
+.edit-profile-form form label{
+    position: relative;
+    font-family: "Monster Hunter";
+    float: left;
+}
+
+.edit-avatar{
+    position: absolute;
+    width: 20%;
+    left: 5%;
+    top: 25%;
+    border-radius: 50%;
+    float: left;
+}
+
+
 .login .label{
     float: left;
 }
@@ -230,6 +300,11 @@ body{
 
 }
 
+.questTakenContent h2{
+    font-size: 1.2vw;
+    font-family: 'papyrus'
+}
+
 .table-quest th{
     font-size: 1.5vw;
     font-family: 'baskvill';
@@ -243,7 +318,7 @@ body{
 }
 
 .table-quest td img{
-    width: 50%;
+    width: 75%;
 
 }
 
@@ -304,10 +379,10 @@ body{
 
 .change-pass-button{
     position: absolute;
-
-    width: 80%;
+    top: 65%;
+    width: 30%;
     margin-top: 5%;
-    margin-left: 8%;
+    margin-left: -15%;
 }
 
 
@@ -437,6 +512,7 @@ hr.white {
     width: 35%;
 
 }
+
 
 
 @media screen and (max-width: 500px) {

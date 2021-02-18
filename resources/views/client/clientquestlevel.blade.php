@@ -17,8 +17,10 @@
                     </div>
                 @endif
                 @if($level > 20 && $level <=40)
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-1.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[1,$subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
                     </div>
                     <div class="button">
                         <a href="{{route('questList',[2, $subject])}}">
@@ -27,11 +29,15 @@
                     </div>
                 @endif
                 @if($level > 40 && $level <=60)
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-1.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[1,$subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-2.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
                     </div>
                     <div class="button">
                         <a href="{{route('questList',[3, $subject])}}">
@@ -40,14 +46,20 @@
                     </div>
                 @endif
                 @if($level > 60 && $level <= 80)
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-1.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[1,$subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-2.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-3.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[3, $subject])}}">
+                            <img src="../img/level-3.png" class="level">
+                        </a>
                     </div>
                     <div class="button">
                         <a href="{{route('questList',[4, $subject])}}">
@@ -56,17 +68,25 @@
                     </div>
                 @endif
                 @if($level > 80)
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-1.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[1,$subject])}}">
+                            <img src="../img/level-1.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-2.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[2, $subject])}}">
+                            <img src="../img/level-2.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-3.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[3, $subject])}}">
+                            <img src="../img/level-3.png" class="level">
+                        </a>
                     </div>
-                    <div class="button" onclick="levelAlert()">
-                        <img src="../img/level-4.png" class="level">
+                    <div class="button">
+                        <a href="{{route('questList',[4, $subject])}}">
+                            <img src="../img/level-4.png" class="level">
+                        </a>
                     </div>
                     <div class="button">
                         <a href="{{route('questList',[5, $subject])}}">
@@ -79,7 +99,7 @@
             </div>
 
         </div>
-        <script>
+       {{-- <script>
             function levelAlert() {
                 swal({
                     title: "Ummm!",
@@ -88,7 +108,7 @@
                     button: "Ok, I'll try",
                 });
             }
-        </script>
+        </script>--}}
     </center>
 
 

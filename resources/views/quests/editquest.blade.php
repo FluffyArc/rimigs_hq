@@ -38,15 +38,12 @@
                 <label>Max Player</label>
                 <input type="number" class="form-control" id="maxPlayer" name="maxPlayer" placeholder="Max Player" value="{{$quests->max_player}}">
             </div>
-            <div class="form-group col-md-3">
-                <label>Days Required</label>
-                <input type="number" class="form-control" id="daysRequired" name="daysRequired"
-                       placeholder="Max Player" value="{{$quests->days_required}}">
-            </div>
+
         </div>
         <div class="form-group">
             <label>Subject</label>
             <select id="subject" name="subject" class="form-control">
+                <option value="{{$selectedSubject->id}}" selected>{{$selectedSubject->subject_name}}</option>
                 @foreach($subjects as $subject)
                     <option value="{{$subject->id}}">{{$subject->subject_name}}</option>
                 @endforeach
