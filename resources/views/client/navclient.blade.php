@@ -15,6 +15,8 @@
                 <hr class="white">
                 <a href="{{route('questTaken')}}">Quest Taken</a>
                 <hr class="white">
+                <a href="{{route('achievementsList')}}">Achievements List</a>
+                <hr class="white">
                 @if(!Auth::check())
                 <a href="{{route('clientLogin')}}">Sign In</a>
                 <hr class="white">

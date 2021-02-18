@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../img/bg.png");
 }
 
@@ -33,8 +33,6 @@ body{
 
 .questPageImage {
     width: 100%;
-
-
 }
 
 .questPageImage-2 {
@@ -42,7 +40,7 @@ body{
 
 }
 
-.img-stamp{
+.img-stamp {
     width: 20%;
 
     border: #0f6674 2px solid;
@@ -69,7 +67,7 @@ body{
     max-height: 85%;
 }
 
-.abort-button{
+.abort-button {
 
     position: absolute;
     top: 60%;
@@ -79,7 +77,7 @@ body{
 
 }
 
-.profile-header{
+.profile-header {
     position: absolute;
     top: 5%;
     float: left;
@@ -87,7 +85,15 @@ body{
     margin-left: -42%;
 }
 
-.achievements-header{
+.achlist-header {
+    position: absolute;
+    top: 5%;
+    float: left;
+    width: 35%;
+    margin-left: -17%;
+}
+
+.achievements-header {
     position: absolute;
     top: 5%;
     float: left;
@@ -95,7 +101,7 @@ body{
     margin-left: 10%;
 }
 
-.avatar{
+.avatar {
     position: absolute;
     width: 12%;
     left: 1%;
@@ -104,7 +110,20 @@ body{
 
 }
 
-.profile-table{
+.icon {
+    max-width: 100%;
+    height: auto;
+}
+
+.icon-ach{
+
+    width: 80%;
+    margin-left: 15%;
+    top: 18%;
+
+}
+
+.profile-table {
     position: absolute;
     top: 18%;
     margin-left: 15%;
@@ -113,7 +132,22 @@ body{
     font-size: 1.1vw;
 }
 
-.ach-table{
+.ach-list-table {
+    position: absolute;
+
+    margin-left: 25%;
+    width: 70%;
+    border-collapse:separate;
+    border-spacing:0 10px;
+    font-family: 'papyrus';
+    font-size: 1.1vw;
+}
+
+.ach-list tr{
+
+}
+
+.ach-table {
     position: absolute;
     top: 15vw;
     margin-left: 30%;
@@ -122,7 +156,7 @@ body{
     font-size: 1.1vw;
 }
 
-.change-form{
+.change-form {
     position: absolute;
     margin-left: 30%;
     top: 20%;
@@ -137,7 +171,7 @@ body{
 
 }
 
-.change-form change-input{
+.change-form change-input {
     position: relative;
     width: 100%;
 
@@ -149,7 +183,7 @@ body{
 }
 
 
-.change-form input{
+.change-form input {
     position: relative;
     width: 100%;
     padding: 3%;
@@ -160,7 +194,7 @@ body{
 
 }
 
-.change-form img{
+.change-form img {
     position: relative;
     width: 80%;
     margin-left: 10%;
@@ -191,6 +225,19 @@ body{
     border: 1px;
 
 
+}
+
+#ach-list {
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    display: block;
+    width: 60%;
+    height: 70%;
+    overflow-y: auto;
+    border: 1px;
+
 
 }
 
@@ -200,12 +247,11 @@ body{
 
 }
 
-.post-text{
+.post-text {
     margin-top: -11.5%;
     font-family: 'papyrus';
     display: none;
 }
-
 
 
 .login {
@@ -225,7 +271,7 @@ body{
     border-radius: 25px;
 }
 
-.edit-profile-form{
+.edit-profile-form {
     padding: 10%;
     padding-top: 30px;
     margin-top: 100px;
@@ -241,10 +287,9 @@ body{
     border-radius: 25px;
 
 
-
 }
 
-.edit-profile-form form{
+.edit-profile-form form {
     position: absolute;
     top: 23%;
     font-size: 1vw;
@@ -252,13 +297,13 @@ body{
     width: 50%;
 }
 
-.edit-profile-form form label{
+.edit-profile-form form label {
     position: relative;
     font-family: "Monster Hunter";
     float: left;
 }
 
-.edit-avatar{
+.edit-avatar {
     position: absolute;
     width: 20%;
     left: 5%;
@@ -268,11 +313,11 @@ body{
 }
 
 
-.login .label{
+.login .label {
     float: left;
 }
 
-.questTakenTitle{
+.questTakenTitle {
     z-index: 2;
     position: absolute;
     top: 1%;
@@ -284,7 +329,7 @@ body{
 
 }
 
-.questTakenContent{
+.questTakenContent {
     z-index: 2;
     position: absolute;
     top: 15%;
@@ -300,29 +345,29 @@ body{
 
 }
 
-.questTakenContent h2{
+.questTakenContent h2 {
     font-size: 1.2vw;
     font-family: 'papyrus'
 }
 
-.table-quest th{
+.table-quest th {
     font-size: 1.5vw;
     font-family: 'baskvill';
 }
 
-.table-quest td{
+.table-quest td {
     font-size: 1.2vw;
     font-family: 'papyrus';
 
 
 }
 
-.table-quest td img{
+.table-quest td img {
     width: 75%;
 
 }
 
-.table-quest{
+.table-quest {
     width: 100%;
     z-index: 2;
     position: absolute;
@@ -331,8 +376,6 @@ body{
     overflow: auto;
     display: block;
 }
-
-
 
 
 .text {
@@ -357,7 +400,7 @@ body{
 }
 
 .loginbtn {
-  width: 40%;
+    width: 40%;
 }
 
 .button2 {
@@ -374,18 +417,15 @@ body{
     /*border: #1b1e21 3px solid;*/
 
 
-
 }
 
-.change-pass-button{
+.change-pass-button {
     position: absolute;
     top: 65%;
     width: 30%;
     margin-top: 5%;
     margin-left: -15%;
 }
-
-
 
 
 #btn-menu {
@@ -471,7 +511,7 @@ hr.white {
     border-top: 0.5px solid white;
 }
 
-.subject-header{
+.subject-header {
     position: absolute;
     top: 1%;
     font-family: 'baskvill';
@@ -479,19 +519,16 @@ hr.white {
     margin-left: 34%;
 }
 
-.subject-btn{
+.subject-btn {
 
     position: relative;
 
     /*border: #1b1e21 3px solid;*/
 
 
-
-
-
 }
 
-.subject-content{
+.subject-content {
     z-index: 2;
     position: absolute;
     top: 20%;
@@ -501,7 +538,7 @@ hr.white {
 
 }
 
-.subject-text{
+.subject-text {
     position: absolute;
     top: 36%;
     margin-left: -42%;
@@ -512,7 +549,6 @@ hr.white {
     width: 35%;
 
 }
-
 
 
 @media screen and (max-width: 500px) {

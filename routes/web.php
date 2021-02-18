@@ -86,6 +86,7 @@ Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
     Route::get('subjects','ClientController@subjects')->name('subjects')->middleware('student');
     Route::get('changepass','ClientController@changepass')->name('changepass')->middleware('student');
     Route::get('changeprofile/{id}','ClientController@changeProfile')->name('changeProfile')->middleware('student');
+    Route::get('achievementsList','AchievementController@achievementsList')->name('achievementsList');
 
 
     Route::post('changepass','ClientController@updatepass')->name('changepass')->middleware('student');

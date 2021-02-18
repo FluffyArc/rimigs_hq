@@ -19,6 +19,12 @@ class AchievementController extends Controller
         return view('achievements.achievementform');
     }
 
+    public function achievementsList(){
+        $ach = Achievement::all();
+
+        return view('client.clientachievementlist', compact(['ach']));
+    }
+
     public function addAch(Request $request){
         if($request->hasFile('icon')){
             $ach = new Achievement();
