@@ -21,8 +21,8 @@ class AchievementController extends Controller
 
     public function achievementsList(){
         $ach = Achievement::all();
-
-        return view('client.clientachievementlist', compact(['ach']));
+        $top = 0;
+        return view('client.clientachievementlist', compact(['ach', 'top']));
     }
 
     public function addAch(Request $request){
