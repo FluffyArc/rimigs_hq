@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIdAchToGradesTable extends Migration
+class CreateAcquiresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddIdAchToGradesTable extends Migration
      */
     public function up()
     {
-        Schema::table('grades', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_ach')->nullable();
+        Schema::create('acquires', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_ach');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddIdAchToGradesTable extends Migration
      */
     public function down()
     {
-        Schema::table('grades', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('acquires');
     }
 }

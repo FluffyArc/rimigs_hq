@@ -194,6 +194,7 @@ class ClientController extends Controller
             ->select('posts.*', 'quests.*')
             ->join('quests', 'quests.id', 'posts.id_quest')
             ->where('posts.id_user', '=', Auth::user()->id)
+            ->orderBy('posts.id','desc')
             ->get();
 
         return view('client.clientquesttaken', compact(['quests']));

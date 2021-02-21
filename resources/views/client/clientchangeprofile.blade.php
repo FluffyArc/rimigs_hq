@@ -25,11 +25,13 @@
                 </div>
 
 
+                <div class="form-group">
+                    <input type="file" name="avatar" class="form-group choose-avatar">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                <input type="file" name="avatar" class="form-group choose-avatar">
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                </div>
 
-                <input type="submit" class="btn btn-primary" value="SUbmit">
+                <input type="submit" class="btn btn-primary" value="Change Profile">
             </form>
 
         </div>
