@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Acquire;
+use App\Aqcuire;
 use App\Post;
 use App\Quest;
 use App\Subject;
@@ -232,7 +234,7 @@ class ClientController extends Controller
 
     public function profile()
     {
-
+        $id_ach_1 = 0; $id_ach_2 = 0; $id_ach_3 = 0; $id_ach_4 = 0; $id_ach_5 = 0;
 
         $subject = DB::table('posts')
             ->select('subjects.subject_name')
@@ -242,7 +244,44 @@ class ClientController extends Controller
 
         $subjects = $subject->unique();
 
-        return view('client.clientprofile', compact(['subjects']));
+        //achievements condition
+        $complete_tasks = DB::table('grades')
+            ->select('*')
+            ->where('id_user','=',Auth::user()->id)
+            ->count();
+
+        if($complete_tasks >= 4)
+            $id_ach_1 = 1;
+
+        if($complete_tasks >= 5)
+            $id_ach_2 = 2;
+
+        $receives = DB::table('achievements')
+            ->select('*')
+            ->where('id','=',$id_ach_1)
+            ->orWhere('id','=',$id_ach_2)
+            ->orWhere('id','=',$id_ach_3)
+            ->orWhere('id','=',$id_ach_4)
+            ->orWhere('id','=',$id_ach_5)
+            ->get();
+
+        //check if the achievement is already received
+        $received = DB::table('acquires')
+            ->select('*')
+            ->where('id_user','=',Auth::user()->id)
+            ->count();
+
+        return view('client.clientprofile', compact(['subjects', 'receives']));
+    }
+
+    public function receivedAch(Request $request){
+        $acquires = new Acquire();
+        $acquires->id_user = Auth::user()->id;
+        $acquires->id_ach = $request->id_ach;
+        $acquires->received = 1;
+
+        $acquires->save();
+        return response()->json(['success' => 'Achievement Acquire']);
     }
 
     public function subjects()

@@ -1,6 +1,7 @@
 @extends('base')
 @extends('client.navclient')
-@section('content')
+@section('content')\
+
     <center>
         <div class="col-md-12" id="board">
             <img src="{{ asset('img/questpage.png') }}" class="questPageImage">
@@ -55,7 +56,19 @@
                 <img src="{{asset('img/achievements.png')}}" class="achievements-header">
 
                 <table border="0" class="ach-table">
-                 
+                    @foreach($receives as $receive)
+                        <tr>
+                            <td style="width: 20%">
+                                <img src="{{asset('../upload/icon/'.$receive->ach_icon)}}" class="receive-ach">
+                            </td>
+                            <td>{{$receive->ach_title}}</td>
+                            <td style="width: 25%">
+                                <div onclick="achievementAcquire({{$receive->id}})">
+                                    <img src="{{asset('../img/receive.png')}}" class="receive-button">
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
 
@@ -64,4 +77,63 @@
             </a>
         </div>
     </center>
+
+    <script>
+        var id_ach;
+        function achievementAcquire(id) {
+            id_ach = id;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '{{url('receivedAch')}}',
+                type: 'POST',
+                data: {
+                    id_ach: id_ach
+                },
+                success: function (data) {
+                    if (data.failed) {
+                        swal(data.failed, {
+                            icon: "error",
+                        });
+                    } else if (data.success) {
+                        swal(data.success, {
+                            icon: "success",
+                        });
+                        console.log(data.success)
+                    }
+
+                    //alert(data.success);
+                    //console.log(data)
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            });
+
+            /*$.ajax({
+                url: '{{--{{url('questPost')}}--}}',
+                    type: 'POST',
+                    data: {
+                      id_user: {{--{{Auth::user()->id}}--}},
+                        id_quest: id,
+                        exp_date: days_required,
+
+                        exp: exp,
+                        id_subject: id_subject,
+                     },
+                    success:function (data){
+                        alert(data.success);
+                        //console.log(data)
+                    },
+                    error: function (response) {
+                        console.log(data)
+                    }
+                });*/
+        }
+    </script>
+
+
 @endsection

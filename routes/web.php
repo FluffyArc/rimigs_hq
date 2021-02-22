@@ -94,6 +94,7 @@ Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
     Route::post('questDetail', 'ClientController@questDetail')->name('questDetail')->middleware('student');
     Route::post('questPost','ClientController@questPost')->middleware('student');
     Route::post('updateProfile', 'ClientController@updateProfile')->name('updateProfile')->middleware('student');
+    Route::post('receivedAch','ClientController@receivedAch')->name('receivedAch');
 
 
 });
