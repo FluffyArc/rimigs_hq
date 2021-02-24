@@ -131,11 +131,16 @@ class ClientController extends Controller
             ->where('subject_name', '=', $key)
             ->first();
 
-        $level = DB::table('grades')
+        /*$level = DB::table('grades')
             ->select('grades.*')
             ->where('id_user', '=', Auth::user()->id)
             ->where('id_subject', '=', $subjects->id)
-            ->sum('hr');
+            ->sum('hr');*/
+
+        $level = DB::table('grades')
+            ->select('*')
+            ->where('id_user','=',Auth::user()->id)
+            ->count();
 
 
         return view('client.clientquestlevel', compact(['level', 'subject']));
@@ -234,8 +239,6 @@ class ClientController extends Controller
 
     public function profile()
     {
-        $id_ach_1 = 0; $id_ach_2 = 0; $id_ach_3 = 0; $id_ach_4 = 0; $id_ach_5 = 0;
-
         $subject = DB::table('posts')
             ->select('subjects.subject_name')
             ->join('subjects', 'posts.id_subject', 'subjects.id')
@@ -244,44 +247,47 @@ class ClientController extends Controller
 
         $subjects = $subject->unique();
 
-        //achievements condition
-        $complete_tasks = DB::table('grades')
+        $hr = DB::table('grades')
+            ->select('hr')
+            ->where('id_user','=',Auth::user()->id)
+            ->sum('hr');
+
+        $completedQuests = DB::table('grades')
             ->select('*')
             ->where('id_user','=',Auth::user()->id)
             ->count();
 
-        if($complete_tasks >= 4)
-            $id_ach_1 = 1;
-
-        if($complete_tasks >= 5)
-            $id_ach_2 = 2;
-
-        $receives = DB::table('achievements')
-            ->select('*')
-            ->where('id','=',$id_ach_1)
-            ->orWhere('id','=',$id_ach_2)
-            ->orWhere('id','=',$id_ach_3)
-            ->orWhere('id','=',$id_ach_4)
-            ->orWhere('id','=',$id_ach_5)
+        //Achievements condition
+        $achs = DB::table('acquires')
+            ->select('ach_title','ach_icon','hr_reward')
+            ->join('achievements','acquires.id_ach','=','achievements.id')
+            ->where('acquires.id_user','=',Auth::user()->id)
             ->get();
 
-        //check if the achievement is already received
-        $received = DB::table('acquires')
-            ->select('*')
-            ->where('id_user','=',Auth::user()->id)
-            ->count();
 
-        return view('client.clientprofile', compact(['subjects', 'receives']));
+
+
+        return view('client.clientprofile', compact(['subjects', 'achs','completedQuests', 'hr']));
     }
 
     public function receivedAch(Request $request){
-        $acquires = new Acquire();
-        $acquires->id_user = Auth::user()->id;
-        $acquires->id_ach = $request->id_ach;
-        $acquires->received = 1;
+        $check = DB::table('acquires')
+            ->select('*')
+            ->where('id_user','=',Auth::user()->id)
+            ->where('id_ach','=',$request->id_ach)
+            ->count();
 
-        $acquires->save();
-        return response()->json(['success' => 'Achievement Acquire']);
+        if($check > 0){
+            return response()->json(['failed' => 'You Already Received The Achievement']);
+        }else {
+            $acquires = new Acquire();
+            $acquires->id_user = Auth::user()->id;
+            $acquires->id_ach = $request->id_ach;
+            $acquires->received = 1;
+
+            $acquires->save();
+            return response()->json(['success' => 'Achievement Acquire']);
+        }
     }
 
     public function subjects()

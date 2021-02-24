@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Acquire;
 use App\Grade;
 use App\Post;
 use App\Quest;
@@ -9,6 +10,7 @@ use App\Subject;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -177,16 +179,55 @@ class PostController extends Controller
         $grade->id_subject = $post->id_subject;
         $grade->hr = $request->grade;
         $grade->id_post = $post->id;
+        $grade->id_quest = $post->id_quest;
 
         if($request->grade > $request->maxgrade){
             return response()->json(['failed'=>'Sorry, your grade is to high for this quest']);
         }else{
             $post->save();
             $grade->save();
+
+            $ach_check = DB::table('grades')
+                ->select('*')
+                ->where('id_user','=',$post->id_user)
+                ->count();
+
+            if($ach_check == 5)
+                $this->insertAch($post->id_user, 1);
+            else if($ach_check == 8)
+                $this->insertAch($post->id_user, 2);
+            else if($ach_check == 10)
+                $this->insertAch($post->id_user, 3);
+            else if($ach_check == 12)
+                $this->insertAch($post->id_user, 4);
+
+            $ach_check_perfect_score = DB::table('quests')
+                ->select('quests.*','grades.*')
+                ->join('grades','grades.id_quest','=','quests.id')
+                ->where('grades.id_user','=',$post->id_user)
+                ->whereRAW('grades.hr = quests.exp')
+                ->count();
+
+            if($ach_check_perfect_score == 5)
+                $this->insertAch($post->id_user, 5);
+            else if($ach_check_perfect_score == 7)
+                $this->insertAch($post->id_user, 6);
+            else if($ach_check_perfect_score == 10)
+                $this->insertAch($post->id_user, 7);
+
             return response()->json(['success'=>'Post graded successfully']);
         }
 
 
+    }
+
+    public function insertAch($id_user, $id_ach){
+        $acquires = new Acquire();
+
+        $acquires->id_user = $id_user;
+        $acquires->id_ach = $id_ach;
+
+        $acquires->save();
     }
 
 

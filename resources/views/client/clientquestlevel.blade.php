@@ -9,14 +9,14 @@
             </div>
             <div id="quest-detail" class="custom-scrollbar-css">
                 <h1 style="text-align: center; font-size: 2vw; ">Choose a level</h1><br>
-                @if($level <= 20)
+                @if($level <= 5)
                     <div class="button">
                         <a href="{{route('questList',[1,$subject])}}">
                             <img src="../img/level-1.png" class="level">
                         </a>
                     </div>
                 @endif
-                @if($level > 20 && $level <=40)
+                @if($level >= 6 && $level <=8)
                     <div class="button">
                         <a href="{{route('questList',[1,$subject])}}">
                             <img src="../img/level-1.png" class="level">
@@ -28,7 +28,7 @@
                         </a>
                     </div>
                 @endif
-                @if($level > 40 && $level <=60)
+                @if($level >= 9 && $level <=11)
                     <div class="button">
                         <a href="{{route('questList',[1,$subject])}}">
                             <img src="../img/level-1.png" class="level">
@@ -45,7 +45,7 @@
                         </a>
                     </div>
                 @endif
-                @if($level > 60 && $level <= 80)
+                @if($level >= 12 && $level <= 14)
                     <div class="button">
                         <a href="{{route('questList',[1,$subject])}}">
                             <img src="../img/level-1.png" class="level">
@@ -67,7 +67,7 @@
                         </a>
                     </div>
                 @endif
-                @if($level > 80)
+                @if($level >= 15)
                     <div class="button">
                         <a href="{{route('questList',[1,$subject])}}">
                             <img src="../img/level-1.png" class="level">
