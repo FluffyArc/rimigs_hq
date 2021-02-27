@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Acquire;
 use App\Aqcuire;
+use App\Lecture;
 use App\Post;
 use App\Quest;
 use App\Subject;
@@ -61,7 +62,7 @@ class ClientController extends Controller
                     ]
                 );
             //$user->save();
-        }else{
+        } else {
             $user = DB::table('users')
                 ->where('id', '=', Auth::user()->id)
                 ->update(
@@ -139,11 +140,13 @@ class ClientController extends Controller
 
         $level = DB::table('grades')
             ->select('*')
-            ->where('id_user','=',Auth::user()->id)
+            ->where('id_user', '=', Auth::user()->id)
             ->count();
 
+        $lectures = Lecture::all();
 
-        return view('client.clientquestlevel', compact(['level', 'subject']));
+
+        return view('client.clientquestlevel', compact(['level', 'subject','lectures']));
     }
 
     public function questPost(Request $request)
@@ -201,7 +204,7 @@ class ClientController extends Controller
             ->select('posts.*', 'quests.*')
             ->join('quests', 'quests.id', 'posts.id_quest')
             ->where('posts.id_user', '=', Auth::user()->id)
-            ->orderBy('posts.id','desc')
+            ->orderBy('posts.id', 'desc')
             ->get();
 
         return view('client.clientquesttaken', compact(['quests']));
@@ -249,37 +252,36 @@ class ClientController extends Controller
 
         $hr = DB::table('grades')
             ->select('hr')
-            ->where('id_user','=',Auth::user()->id)
+            ->where('id_user', '=', Auth::user()->id)
             ->sum('hr');
 
         $completedQuests = DB::table('grades')
             ->select('*')
-            ->where('id_user','=',Auth::user()->id)
+            ->where('id_user', '=', Auth::user()->id)
             ->count();
 
         //Achievements condition
         $achs = DB::table('acquires')
-            ->select('ach_title','ach_icon','hr_reward')
-            ->join('achievements','acquires.id_ach','=','achievements.id')
-            ->where('acquires.id_user','=',Auth::user()->id)
+            ->select('ach_title', 'ach_icon', 'hr_reward')
+            ->join('achievements', 'acquires.id_ach', '=', 'achievements.id')
+            ->where('acquires.id_user', '=', Auth::user()->id)
             ->get();
 
 
-
-
-        return view('client.clientprofile', compact(['subjects', 'achs','completedQuests', 'hr']));
+        return view('client.clientprofile', compact(['subjects', 'achs', 'completedQuests', 'hr']));
     }
 
-    public function receivedAch(Request $request){
+    public function receivedAch(Request $request)
+    {
         $check = DB::table('acquires')
             ->select('*')
-            ->where('id_user','=',Auth::user()->id)
-            ->where('id_ach','=',$request->id_ach)
+            ->where('id_user', '=', Auth::user()->id)
+            ->where('id_ach', '=', $request->id_ach)
             ->count();
 
-        if($check > 0){
+        if ($check > 0) {
             return response()->json(['failed' => 'You Already Received The Achievement']);
-        }else {
+        } else {
             $acquires = new Acquire();
             $acquires->id_user = Auth::user()->id;
             $acquires->id_ach = $request->id_ach;
@@ -304,21 +306,33 @@ class ClientController extends Controller
 
     public function updatepass(Request $request)
     {
-        $user = User::findOrFail($request->id);
+        $user = DB::table('users')
+            ->select('*')
+            ->where('email', '=', $request->email)
+            ->first();
 
-        //$user->password = Hash::make($request->newpass);
-        $user->password = Hash::make($request->newpass);
+        $user->password = $request->newpass;
 
-        if (Hash::check($request->currpass, Auth::user()->password)) {
-            if ($request->newpass == $request->confirmpass) {
-                $user->save();
-                return response()->json(['success' => 'Password changed successfully']);
-            } else {
-                return response()->json(['failed' => 'Password changed failed. Make sure you type the correct password']);
-            }
+
+        if ($request->newpass == $request->confirmpass) {
+            $update = DB::table('users')
+                ->where('email', '=', $request->email)
+                ->update(
+                    [
+                        'password'=>$user->password
+                    ]
+                );
+            return response()->json(['success' => 'Password Change Successfully']);
         } else {
             return response()->json(['failed' => 'Password changed failed. Make sure you type the correct password']);
         }
 
+
+    }
+
+    public function lecture($id){
+        $lecture = Lecture::findOrFail($id);
+
+        return view('client.clientlecture',compact(['lecture']));
     }
 }

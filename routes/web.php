@@ -24,7 +24,7 @@ Route::get('admin.logout','Auth\LoginController@logout')->name('logout');
 Route::get('admin/register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('admin/register','Auth\RegisterController@register');
 
-//Auth::routes();
+Auth::routes();
 
 
 /*Route::group(['middleware'=>'auth'], function(){
@@ -57,6 +57,9 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::get('achievement','AchievementController@index')->name('achievement');
     Route::get('addAchievement','AchievementController@form')->name('form');
     Route::get('achEdit/{id}','AchievementController@achEdit')->name('achEdit');
+    Route::get('lectures','LectureController@index')->name('lectures');
+    Route::get('lectureForm','LectureController@form')->name('lectureForm');
+    Route::get('editLecture/{id}','LectureController@edit')->name('editLecture');
 
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
@@ -69,10 +72,13 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::post('selectSubjectInPost','PostController@selectSubjectInPost')->name('selectSubjectInPost');
     Route::post('addAch','AchievementController@addAch')->name('addAch');
     Route::post('updateAch/{id}','AchievementController@update')->name('updateAch');
+    Route::post('addLecture','LectureController@add')->name('addLecture');
+    Route::post('updateLecture/{id}','LectureController@update')->name('updateLecture');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
     Route::get('destroyUser/{id}','UserController@destroyUser')->name('destroyUser');
     Route::get('destroyAch/{id}','AchievementController@destroy')->name('destroyAch');
+    Route::get('destroyLecture/{id}','LectureController@destroy')->name('destroyLecture');
 });
 
 Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
@@ -84,12 +90,13 @@ Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
     Route::get('detail/{id_quest}','ClientController@detail')->name('detail')->middleware('student');
     Route::get('profile','ClientController@profile')->name('profile')->middleware('student');
     Route::get('subjects','ClientController@subjects')->name('subjects')->middleware('student');
-    Route::get('changepass','ClientController@changepass')->name('changepass')->middleware('student');
+
     Route::get('changeprofile/{id}','ClientController@changeProfile')->name('changeProfile')->middleware('student');
     Route::get('achievementsList','AchievementController@achievementsList')->name('achievementsList');
+    Route::get('clientlecture/{id}','ClientController@lecture')->name('clientlecture');
 
 
-    Route::post('changepass','ClientController@updatepass')->name('changepass')->middleware('student');
+
     Route::post('abort','ClientController@abortQuest')->middleware('student');
     Route::post('questDetail', 'ClientController@questDetail')->name('questDetail')->middleware('student');
     Route::post('questPost','ClientController@questPost')->middleware('student');
@@ -98,9 +105,17 @@ Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){
 
 
 });
+Route::get('password/reset','Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::get('password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
 Route::get('clientLogin', 'ClientController@login')->name('clientLogin');
 Route::post('clientLogin', 'Auth\LoginController@login');
 Route::get('register','ClientController@register')->name('register');
 Route::post('register','Auth\RegisterController@register');
 Route::get('logout', 'Auth\LogoutController@index')->name('logout');
+
+Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+Route::post('forget-password', 'App\Http\Controllers\Auth\ForgotPasswordController@postEmail')->name('forget-password');
+Route::post('password/reset','Auth\ResetPasswordController@reset')->name('password.update');
 

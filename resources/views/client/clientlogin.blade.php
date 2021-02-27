@@ -33,6 +33,11 @@
                 </div>
                 <input type="image" name="submit" src="../img/login.png" class="loginbtn">
                 <div class="form-group">
+                    <label for="forget_password">
+                        <a href="{{route('password.request')}}" style="color: white; text-decoration: underline">Forget Password? Click Here</a>
+
+                    </label>
+                    <br>
                     <label for="register">
                         <a href="{{route('register')}}" style="color: white; text-decoration: underline">New User? Click Here To Register</a>
                     </label>

@@ -7,6 +7,21 @@
             <div id="quest-content">
                 <img src="{{ asset('img/Dragons.png') }}" class="dragonLogo">
             </div>
+            <div id="lecture-list" class="custom-scrollbar-css">
+                <h1 style="text-align: center; font-size: 2vw; ">Class Material</h1>
+                @foreach($lectures as $lecture)
+                    <a href="{{route('clientlecture',$lecture->id)}}" style="text-decoration: none; color: black">
+                    <div class="button-lecture" id="lecture-title">
+                        <strong style="font-size: 1.3vw; font-family: 'rageitalic';">
+                            {{$lecture->title}}
+                            {{--{{$loop->index}}--}}
+                        </strong>
+
+
+                    </div>
+                    </a>
+                @endforeach
+            </div>
             <div id="quest-detail" class="custom-scrollbar-css">
                 <h1 style="text-align: center; font-size: 2vw; ">Choose a level</h1><br>
                 @if($level <= 5)

@@ -2,64 +2,34 @@
 @extends('client.navclient')
 @section('content')
     <center>
-        <div class="col-md-12" id="board">
-            <img src="{{ asset('img/questpage-2.png') }}" class="questPageImage-2">
-            <div class="col-md-12">
-                <img src="{{asset('../img/change-pass-header.png')}}" class="profile-header">
-            </div>
-            <div class="col-md-12 custom-scrollbar-css">
-                <form class="change-form">
-                    @csrf
-                    <div class="form-group change-input">
-                        <label for="password" class="label">Current Password</label>
-                        <input type="password" id="current-password" name="current-password" placeholder="Current Password">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <div class="login">
+            <img src="{{ asset('img/change-pass-header.png') }}" style="width: 100%">
+            <form method="POST" action="{{route('changepass')}}">
+                @csrf
+                <div class="form-group">
+                    <label for="email" class="label"><h4>Email</h4></label>
+                    <input id="email" type="text" class="form-control" name="email" required placeholder="Username"
+                           autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="new-password" class="label"><h4>New Password</h4></label>
+                    <input id="new-password" type="password" class="form-control" name="new-password" required
+                           placeholder="New Password" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password" class="label"><h4>Confirm Password</h4></label>
+                    <input id="confirm-password" type="password" class="form-control" name="confirm-password" required
+                           placeholder="Confirm Password" autofocus>
+                </div>
+                <input type="image" name="submit" src="../img/change-pass-button.png" class="change-pass-button" onclick="changePass()">
 
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
+            </form>
 
-                    </div>
-                    <br>
-                    <div class="form-group change-input">
-                        <label for="password" class="label">New Password</label>
-                        <input type="password" id="new-password" name="new-password" placeholder="New Password">
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-
-                    </div>
-                    <br>
-                    <div class="form-group change-input">
-                        <label for="password" class="label">Confirm Password</label>
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-
-                    </div>
-                    <br>
-                    <div class="form-group change-input">
-                        <img src="{{asset('../img/change-pass-button.png')}}" onclick="changePass()">
-
-                    </div>
-
-
-                </form>
-
-            </div>
         </div>
-
         <script>
             function changePass() {
-                var currPass = document.getElementById('current-password').value;
+                var email = document.getElementById('email').value;
                 var newPass = document.getElementById("new-password").value;
                 var confirmPass = document.getElementById('confirm-password').value;
                 $.ajaxSetup({
@@ -71,24 +41,20 @@
                     url: '{{url('changepass')}}',
                     type: 'POST',
                     data: {
-                        id: {{Auth::user()->id}},
-                        currpass: currPass,
+                        email: email,
                         newpass: newPass,
                         confirmpass: confirmPass,
                     },
                     success: function (data) {
-                        if(data.failed){
+                        if (data.failed) {
                             swal(data.failed, {
                                 icon: "error",
                             });
-                        }else if(data.success){
+                        } else if (data.success) {
                             swal(data.success, {
                                 icon: "success",
                             });
 
-                            setTimeout(function () {
-                                window.location.href = "{{route('subjects')}}";
-                            }, 3000);
                         }
                         //alert('success').html(data);
                     },
