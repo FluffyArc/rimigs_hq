@@ -60,6 +60,7 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::get('lectures','LectureController@index')->name('lectures');
     Route::get('lectureForm','LectureController@form')->name('lectureForm');
     Route::get('editLecture/{id}','LectureController@edit')->name('editLecture');
+    Route::get('editSubject/{id}','SubjectController@edit')->name('editSubject');
 
     Route::post('addQuest','QuestController@addQuest')->name('addQuest');
     Route::post('addSubject','SubjectController@addSubject');
@@ -74,11 +75,13 @@ Route::middleware(['prevent-back-history','auth', 'admin'])->group(function(){
     Route::post('updateAch/{id}','AchievementController@update')->name('updateAch');
     Route::post('addLecture','LectureController@add')->name('addLecture');
     Route::post('updateLecture/{id}','LectureController@update')->name('updateLecture');
+    Route::post('updateSubject/{id}','SubjectController@update')->name('updateSubject');
 
     Route::get('destroyQuest/{id}','QuestController@destroyQuest')->name('destroyQuest');
     Route::get('destroyUser/{id}','UserController@destroyUser')->name('destroyUser');
     Route::get('destroyAch/{id}','AchievementController@destroy')->name('destroyAch');
     Route::get('destroyLecture/{id}','LectureController@destroy')->name('destroyLecture');
+    Route::get('destroySubject/{id}','SubjectController@destroy')->name('destroySubject');
 });
 
 Route::middleware(['prevent-back-history','auth', 'student'])->group(function(){

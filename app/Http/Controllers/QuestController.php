@@ -22,7 +22,7 @@ class QuestController extends Controller
         $quest->level = request('level');
         $quest->max_player = request('maxPlayer');
         $quest->id_subject = request('subject');
-        $quest->status = "Active";
+        $quest->status = \request('status');
 
         $quest->save();
 
@@ -50,22 +50,23 @@ class QuestController extends Controller
     }
 
     public function updateQuest(Request $request, $id){
-        $this->validate($request,[
-            'questTitle' => 'required',
-            'questDesc' => 'required',
-            'exp' => 'required',
-            'level' => 'required',
-            'maxPlayer' => 'required',
-            'subject' => 'required'
-        ]);
+
 
         $quests = Quest::findOrFail($id);
-        $quests->title = $request->questTitle;
-        $quests->desc = $request->questDesc;
-        $quests->exp = $request->exp;
-        $quests->level = $request->level;
-        $quests->max_player = $request->maxPlayer;
-        $quests->id_subject = $request->subject;
+
+        $update = DB::table('quests')
+            ->where('id', '=', $id)
+            ->update(
+                [
+                    'title'=>$request->questTitle,
+                    'desc'=>$request->questDesc,
+                    'exp'=>$request->exp,
+                    'level'=>$request->level,
+                    'max_player'=>$request->maxPlayer,
+                    'id_subject'=>$request->subject,
+                    'status'=>$request->status
+                ]
+            );
 
         $subjectName = Subject::findOrFail($quests->id_subject);
 

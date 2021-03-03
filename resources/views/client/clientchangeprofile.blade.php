@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <img src="{{asset('img/user-profile.png')}}" style="width: 100%;">
             </div>
-            <img src="../upload/avatar/{{Auth::user()->avatar}}" class="edit-avatar">
+            <img src="{{asset('upload/avatar/'.Auth::user()->avatar)}}" class="edit-avatar">
 
             <form method="POST" action="{{route('updateProfile')}}" enctype="multipart/form-data">
                 @csrf

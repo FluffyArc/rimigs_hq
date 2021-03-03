@@ -22,7 +22,7 @@ class CreateQuestsTable extends Migration
             $table->integer('max_player');
 
             $table->unsignedBigInteger('id_subject');
-            $table->string('status');
+            $table->boolean('status');
           /*  $table->foreign('id_subject')
                 ->references('id')
                 ->on('subjects')

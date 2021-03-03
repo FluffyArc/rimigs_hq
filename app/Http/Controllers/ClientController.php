@@ -90,6 +90,7 @@ class ClientController extends Controller
             ->select('quests.*')
             ->where('level', '=', $level)
             ->where('id_subject', '=', $subject->id)
+            ->where('status','=','1')
             ->get();
 
         $count = DB::table('quests')
@@ -143,7 +144,10 @@ class ClientController extends Controller
             ->where('id_user', '=', Auth::user()->id)
             ->count();
 
-        $lectures = Lecture::all();
+        $lectures = DB::table('lectures')
+            ->select('*')
+            ->where('id_subject','=', $subjects->id)
+            ->get();
 
 
         return view('client.clientquestlevel', compact(['level', 'subject','lectures']));
@@ -175,6 +179,13 @@ class ClientController extends Controller
             ->where('ongoing', '=', '1')
             ->get();
 
+        $checkpostquest = DB::table('posts')
+            ->select('posts.*')
+            ->where('id_user', '=', $request->id_user)
+            ->where('id_quest', '=', $request->id_quest)
+            ->where('ongoing', '=', '1')
+            ->get();
+
         $checkCompletedQuest = DB::table('posts')
             ->select('posts.*')
             ->where('id_user', '=', $request->id_user)
@@ -182,8 +193,11 @@ class ClientController extends Controller
             ->where('ongoing', '=', '0')
             ->get();
 
-        if ($check->count() == 1) {
-            return response()->json(['failed' => 'Sorry, You are still in ongoing quest']);
+        if($checkpostquest->count() >= 1){
+            return response()->json(['failed' => 'Sorry, You already pick this quest. Try another one']);
+        }
+        else if ($check->count() == 3) {
+            return response()->json(['failed' => 'Sorry, You reach your maximum quests. Ty to finish those first']);
         } else if ($checkCompletedQuest->count() >= 1) {
             return response()->json(['failed' => 'You already complete this quest']);
         } else {

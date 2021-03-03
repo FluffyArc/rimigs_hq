@@ -26,9 +26,8 @@
                 <th>Exp</th>
                 <th>Level</th>
                 <th>Max Player</th>
-
-
                 <th>Subject</th>
+                <th>Status</th>
                 <th>Action</th>
                 <th>Update</th>
                 <th>Delete</th>
@@ -45,12 +44,19 @@
                         <td align="center">{{$quest->level}}</td>
                         <td align="center">{{$quest->max_player}}</td>
                         <td>{{$quest->subject_name}}</td>
+                        <td>
+                            @if($quest->status == 1)
+                                Active
+                            @else
+                                Inactive
+                            @endif
+                        </td>
                         <td align="center">
                             @if(Auth::user()->user_type == 'teacher')
                                 <a class="btn btn-primary" href="/showQuestById/{{$quest->id}}/{{$quest->id_subject}}"
                                    role="button">POST</a>
                             @elseif(Auth::user()->user_type == 'assistant')
-                                <a class="btn btn-primary disabled" role="button" >POST</a>
+                                <a class="btn btn-primary disabled" role="button">POST</a>
                             @endif
                         </td>
                         <td align="center">

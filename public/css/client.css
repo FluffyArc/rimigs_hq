@@ -200,11 +200,14 @@ body {
     padding: 1%;
     padding-top: 6%;
     width: 77%;
+    padding-bottom: 4%;
+    margin-left: 20%;
 
 
     background-image: url("../img/ach-box.png");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 80%;
+
 
     /*border: #1b1e21 3px solid;*/
 }

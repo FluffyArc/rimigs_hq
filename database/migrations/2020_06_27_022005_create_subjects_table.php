@@ -17,6 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->string('subject_name');
             $table->integer('credit');
+            $table->boolean('active');
             $table->timestamps();
 
         });

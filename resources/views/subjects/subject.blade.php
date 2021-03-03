@@ -24,20 +24,36 @@
         @endif
 
 
-        <div class="table-responsive">
+        <div class="table-responsive" style="margin-top: 1%">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead align="center">
                 <th>No</th>
                 <th>Subject Name</th>
                 <th>Subject Credit</th>
-                <?php $no = 1; ?>
+                <th>Status</th>
+                <th>Action</th>
                 </thead>
                 <tbody>
                 @foreach($subjects as $subject)
                     <tr>
-                        <td>{{$no++}}</td>
+                        <td align="center">{{$no++}}</td>
                         <td>{{$subject->subject_name}}</td>
-                        <td>{{$subject->credit}}</td>
+                        <td align="center">{{$subject->credit}}</td>
+                        <td align="center">
+                            @if($subject->active == 1)
+                                Active
+                            @else
+                                Inactive
+                            @endif
+                        </td>
+                        <td align="center" style="width: 20%">
+                            <a href="{{route('editSubject', $subject->id)}}">
+                                <button type="button" class="btn btn-primary">UPDATE</button>
+                            </a>
+                            <a href="{{route('destroySubject',$subject->id)}}">
+                                <button type="button" class="btn btn-danger">DELETE</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

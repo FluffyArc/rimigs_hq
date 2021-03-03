@@ -12,10 +12,17 @@
 
                 @foreach($subjects as $subject)
                     <div class="subject-btn">
+                        @if($subject->active == 1)
                         <a href="{{route('questLevel',$subject->subject_name)}}" style="text-decoration: none; color: black">
                             <img src="../img/button.png" style="width: 50%">
                             <strong class="subject-text">{{$subject->subject_name}}</strong>
                         </a>
+                        @else
+                        <div>
+                            <img src="../img/button.png" style="width: 50%; opacity: 50%;">
+                            <strong class="subject-text" style="opacity: 50%">{{$subject->subject_name}}</strong>
+                        </div>
+                        @endif
 
                     </div>
                 @endforeach

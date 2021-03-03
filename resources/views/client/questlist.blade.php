@@ -35,10 +35,11 @@
                 <div style="font-family: 'baskvill'; font-size: 1.5vw;"><h1>Quest Detail</h1></div>
                 <div style="font-family: 'papyrus'; font-size: 1.2vw;">
 
-
+                    <strong><div id="questTitle" style="font-size: 1.5vw; margin-bottom: 3%"></div></strong>
                     <div id="questDetail">
 
                     </div>
+
                 </div>
 
                 <div class="container">
@@ -46,6 +47,7 @@
                     <img src="{{asset('../img/post-button.png')}}" class="btn-post" id="btn-post"  onclick="postQuest()">
 
                     <h2 id="available" style="font-family: 'papyrus'; font-size: 1.5vw;"></h2>
+
                 </div>
             </div>
 
@@ -75,8 +77,9 @@
                         //exp = data.details["exp"];
                         days_required = data.details["days_required"];
                         id_subject = data.details["id_subject"];
+                        document.getElementById('questTitle').innerHTML = data.details["title"];
                         document.getElementById('questDetail').innerHTML = data.details["desc"];
-                        //document.getElementById('exp').innerHTML = "Exp: "+data.details["exp"];
+                        document.getElementById('exp').innerHTML = "Exp: "+data.details["exp"];
                         document.getElementById('available').innerHTML = "Available: "+data.available;
 
                         document.getElementById('btn-post').style.display = "block";

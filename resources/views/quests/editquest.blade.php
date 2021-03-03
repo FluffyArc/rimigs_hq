@@ -49,6 +49,29 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label>Status</label>
+            <div class="form-check">
+                @if($subject->status == 1)
+                    <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
+                @else
+                    <input class="form-check-input" type="radio" name="status" id="status" value="1">
+                @endif
+                <label class="form-check-label" for="active">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                @if($subject->status == 0)
+                    <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
+                @else
+                    <input class="form-check-input" type="radio" name="status" id="status" value="0">
+                @endif
+                <label class="form-check-label" for="inactive">
+                    Inactive
+                </label>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Update Quest</button>
     </form>
 @endsection
