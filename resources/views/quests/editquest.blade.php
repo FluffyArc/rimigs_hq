@@ -52,7 +52,7 @@
         <div class="form-group">
             <label>Status</label>
             <div class="form-check">
-                @if($subject->status == 1)
+                @if($quests->status == 1)
                     <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
                 @else
                     <input class="form-check-input" type="radio" name="status" id="status" value="1">
@@ -62,7 +62,7 @@
                 </label>
             </div>
             <div class="form-check">
-                @if($subject->status == 0)
+                @if($quests->status == 0)
                     <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
                 @else
                     <input class="form-check-input" type="radio" name="status" id="status" value="0">

@@ -120,20 +120,32 @@ class UserController extends Controller
 
         $subjects = $subject->unique();*/
 
-        $completedQuests = DB::table('posts')
+        /*$completedQuests = DB::table('posts')
             ->select('posts.id_quest', 'grades.hr', 'quests.title', 'quests.exp as questExp')
             ->join('quests','posts.id_quest','=','quests.id')
             ->join('grades','posts.id','=','grades.id_post')
             ->where('posts.id_user','=',$user->id)
             ->where('posts.ongoing','=','0')
             ->orderBy('posts.id','asc')
-            ->get();
+            ->get();*/
 
+        $completedQuests = DB::table('grades')
+            ->select('quests.title', 'quests.exp','grades.hr')
+            ->join('quests','quests.id','=','grades.id_quest')
+            ->where('grades.id_user','=',$user->id)
+            ->orderBy('grades.id','asc')
+            ->get();
 
         $completed = $completedQuests->unique();
 
+        $achievements = DB::table('acquires')
+            ->select('achievements.ach_title','achievements.hr_reward')
+            ->join('achievements','achievements.id','=','acquires.id_ach')
+            ->where('id_user','=',$user->id)
+            ->get();
 
-        return view('users.userdetail', compact(['user', 'exp', 'subjects', 'completed']));
+
+        return view('users.userdetail', compact(['user', 'exp', 'subjects', 'completed', 'achievements']));
     }
 
     public function destroyUser($id){

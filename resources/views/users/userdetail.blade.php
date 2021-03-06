@@ -55,7 +55,22 @@
                         <ol>
                             @foreach($completed as $complete)
 
-                                <li>{{$complete->title}} (Exp: {{$complete->hr}}/{{$complete->questExp}})</li>
+                                <li>{{$complete->title}} (Exp: {{$complete->hr}}/{{$complete->exp}})</li>
+
+                            @endforeach
+                        </ol>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">Achievement List</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ol>
+                            @foreach($achievements as $ach)
+
+                                <li>{{$ach->ach_title}} (Reward: +{{$ach->hr_reward}})</li>
 
                             @endforeach
                         </ol>
